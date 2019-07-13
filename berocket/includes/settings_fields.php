@@ -1,8 +1,8 @@
 <?php
-if ( ! class_exists( 'BeRocket_framework_settings_fields' ) ) {
-	class BeRocket_framework_settings_fields {
+if ( ! class_exists( 'Ramphor_framework_settings_fields' ) ) {
+	class Ramphor_framework_settings_fields {
 		function __construct() {
-			do_action( 'BeRocket_framework_settings_fields_construct' );
+			do_action( 'Ramphor_framework_settings_fields_construct' );
 			add_filter( 'berocket_framework_item_content_text', array( $this, 'text' ), 10, 6 );
 			add_filter( 'berocket_framework_item_content_number', array( $this, 'number' ), 10, 6 );
 			add_filter( 'berocket_framework_item_content_radio', array( $this, 'radio' ), 10, 8 );
@@ -104,5 +104,5 @@ if ( ! class_exists( 'BeRocket_framework_settings_fields' ) ) {
 			return $html;
 		}
 	}
-	new BeRocket_framework_settings_fields();
+	new Ramphor_framework_settings_fields();
 }

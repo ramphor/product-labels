@@ -3,18 +3,18 @@
  $post_settings example
 array(
    'labels' => array(
-	   'menu_name'          => _x( 'Product Filters', 'Admin menu name', 'BeRocket_AJAX_domain' ),
-	   'add_new_item'       => __( 'Add New Filter', 'BeRocket_AJAX_domain' ),
-	   'edit'               => __( 'Edit', 'BeRocket_AJAX_domain' ),
-	   'edit_item'          => __( 'Edit Filter', 'BeRocket_AJAX_domain' ),
-	   'new_item'           => __( 'New Filter', 'BeRocket_AJAX_domain' ),
-	   'view'               => __( 'View Filters', 'BeRocket_AJAX_domain' ),
-	   'view_item'          => __( 'View Filter', 'BeRocket_AJAX_domain' ),
-	   'search_items'       => __( 'Search Product Filters', 'BeRocket_AJAX_domain' ),
-	   'not_found'          => __( 'No Product Filters found', 'BeRocket_AJAX_domain' ),
-	   'not_found_in_trash' => __( 'No Product Filters found in trash', 'BeRocket_AJAX_domain' ),
+	   'menu_name'          => _x( 'Product Filters', 'Admin menu name', 'Ramphor_AJAX_domain' ),
+	   'add_new_item'       => __( 'Add New Filter', 'Ramphor_AJAX_domain' ),
+	   'edit'               => __( 'Edit', 'Ramphor_AJAX_domain' ),
+	   'edit_item'          => __( 'Edit Filter', 'Ramphor_AJAX_domain' ),
+	   'new_item'           => __( 'New Filter', 'Ramphor_AJAX_domain' ),
+	   'view'               => __( 'View Filters', 'Ramphor_AJAX_domain' ),
+	   'view_item'          => __( 'View Filter', 'Ramphor_AJAX_domain' ),
+	   'search_items'       => __( 'Search Product Filters', 'Ramphor_AJAX_domain' ),
+	   'not_found'          => __( 'No Product Filters found', 'Ramphor_AJAX_domain' ),
+	   'not_found_in_trash' => __( 'No Product Filters found in trash', 'Ramphor_AJAX_domain' ),
    ),
-   'description'     => __( 'This is where you can add Product Filters.', 'BeRocket_AJAX_domain' ),
+   'description'     => __( 'This is where you can add Product Filters.', 'Ramphor_AJAX_domain' ),
    'public'          => true,
    'show_ui'         => true,
    'capability_type' => 'post',
@@ -29,8 +29,8 @@ array(
 )
 */
 
-if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
-	class BeRocket_custom_post_class {
+if ( ! class_exists( 'Ramphor_custom_post_class' ) ) {
+	class Ramphor_custom_post_class {
 		public $meta_boxes       = array();
 		public $default_settings = array();
 		public $post_settings, $post_name;
@@ -69,7 +69,7 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 				add_action( 'berocket_custom_post_' . $this->post_name . '_admin_init_only', array( $this, 'jquery_sortable_for_posts' ) );
 			}
 			if ( ! empty( $this->post_settings['capability_type'] ) && $this->post_settings['capability_type'] != 'product' ) {
-				add_filter( 'BeRocket_admin_init_user_capabilities', array( $this, 'init_user_capabilities' ) );
+				add_filter( 'Ramphor_admin_init_user_capabilities', array( $this, 'init_user_capabilities' ) );
 			}
 		}
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 		public function manage_edit_columns( $columns ) {
 			$columns         = array();
 			$columns['cb']   = '<input type="checkbox" />';
-			$columns['name'] = __( 'Name', 'BeRocket_domain' );
+			$columns['name'] = __( 'Name', 'Ramphor_domain' );
 			$columns         = apply_filters( 'berocket_custom_post_' . $this->post_name . '_manage_edit_columns', $columns, $this->post_type_parameters );
 			return $columns;
 		}
@@ -198,8 +198,8 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 		}
 
 		public function add_meta_boxes() {
-			add_meta_box( 'submitdiv', __( 'Save content', 'BeRocket_domain' ), array( $this, 'save_meta_box' ), $this->post_name, 'side', 'high' );
-			add_meta_box( 'copysettingsfromdiv', __( 'Copy settings from', 'BeRocket_domain' ), array( $this, 'copy_settings_from' ), $this->post_name, 'side', 'high' );
+			add_meta_box( 'submitdiv', __( 'Save content', 'Ramphor_domain' ), array( $this, 'save_meta_box' ), $this->post_name, 'side', 'high' );
+			add_meta_box( 'copysettingsfromdiv', __( 'Copy settings from', 'Ramphor_domain' ), array( $this, 'copy_settings_from' ), $this->post_name, 'side', 'high' );
 			foreach ( $this->meta_boxes as $meta_box ) {
 				add_meta_box( $meta_box['slug'], $meta_box['name'], $meta_box['callback'], $this->post_name, $meta_box['position'], $meta_box['priority'] );
 			}
@@ -211,7 +211,7 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 			<div class="berocket_copy_from_custom_post_block">
 				<?php do_action( 'berocket_copy_from_custom_post_block', $this->post_name, $post ); ?>
 				<select name="berocket_copy_from_custom_post_select">
-					<option value="0"><?php _e( 'Do not copy', 'BeRocket_domain' ); ?></option>
+					<option value="0"><?php _e( 'Do not copy', 'Ramphor_domain' ); ?></option>
 					<?php
 					if ( ! empty( $posts_array ) && is_array( $posts_array ) ) {
 						foreach ( $posts_array as $post_id ) {
@@ -224,7 +224,7 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 					?>
 				</select>
 				<input name="berocket_copy_from_custom_post" type="hidden" value="">
-				<button type="button" class="button" disabled><?php _e( 'Copy', 'BeRocket_domain' ); ?></button>
+				<button type="button" class="button" disabled><?php _e( 'Copy', 'Ramphor_domain' ); ?></button>
 			</div>
 			<script>
 				jQuery('.berocket_copy_from_custom_post_block button').on('click', function() {
@@ -260,9 +260,9 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 							if ( ! in_array( $pagenow, array( 'post-new.php' ) ) ) {
 								if ( current_user_can( 'delete_post', $post->ID ) ) {
 									if ( ! EMPTY_TRASH_DAYS ) {
-										$delete_text = __( 'Delete Permanently', 'BeRocket_domain' );
+										$delete_text = __( 'Delete Permanently', 'Ramphor_domain' );
 									} else {
-										$delete_text = __( 'Move to Trash', 'BeRocket_domain' );
+										$delete_text = __( 'Move to Trash', 'Ramphor_domain' );
 									}
 									?>
 									<a class="submitdelete deletion" href="<?php echo esc_url( get_delete_post_link( $post->ID ) ); ?>"><?php echo esc_attr( $delete_text ); ?></a>
@@ -274,7 +274,7 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 
 						<div id="publishing-action">
 							<span class="spinner"></span>
-							<input type="submit" class="button button-primary tips" name="publish" value="<?php _e( 'Save', 'BeRocket_domain' ); ?>" data-tip="<?php _e( 'Save/update notice', 'BeRocket_domain' ); ?>" />
+							<input type="submit" class="button button-primary tips" name="publish" value="<?php _e( 'Save', 'Ramphor_domain' ); ?>" data-tip="<?php _e( 'Save/update notice', 'Ramphor_domain' ); ?>" />
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -320,7 +320,7 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 				$post_data = berocket_sanitize_array( $_POST[ $this->post_name ] );
 
 				if ( is_array( $post_data ) ) {
-					$settings = BeRocket_Framework::recursive_array_set( $this->default_settings, $post_data );
+					$settings = Ramphor_Framework::recursive_array_set( $this->default_settings, $post_data );
 				} else {
 					$settings = $post_data;
 				}
@@ -474,7 +474,7 @@ if ( ! class_exists( 'BeRocket_custom_post_class' ) ) {
 			return $html;
 		}
 		public function sortable_manage_edit_columns( $columns ) {
-			$columns['berocket_sortable'] = __( 'Order', 'BeRocket_domain' );
+			$columns['berocket_sortable'] = __( 'Order', 'Ramphor_domain' );
 			return $columns;
 		}
 		public function jquery_sortable_for_posts() {

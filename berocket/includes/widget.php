@@ -3,9 +3,9 @@
  * Widget
  */
 
-if ( ! class_exists( 'BeRocket_Widget' ) ) {
+if ( ! class_exists( 'Ramphor_Widget' ) ) {
 
-	class BeRocket_Widget extends WP_Widget {
+	class Ramphor_Widget extends WP_Widget {
 		public static $defaults = array(
 			'title' => '',
 		);

@@ -76,14 +76,14 @@ if ( ! function_exists( 'br_is_plugin_active' ) ) {
 	/**
 	 * Public function to add to plugin settings buttons to upload or select icons
 	 *
-	 * @var $plugin_name - should be class name without BeRocket_ part
+	 * @var $plugin_name - should be class name without Ramphor_ part
 	 *
 	 * @return boolean
 	 */
 	function br_is_plugin_active( $plugin_name, $version = '1.0.0.0', $version_end = '9.9.9.9' ) {
-		if ( defined( 'BeRocket_' . $plugin_name . '_version' ) &&
-			 constant( 'BeRocket_' . $plugin_name . '_version' ) >= $version &&
-			 constant( 'BeRocket_' . $plugin_name . '_version' ) <= $version_end
+		if ( defined( 'Ramphor_' . $plugin_name . '_version' ) &&
+			 constant( 'Ramphor_' . $plugin_name . '_version' ) >= $version &&
+			 constant( 'Ramphor_' . $plugin_name . '_version' ) <= $version_end
 		) {
 			return true;
 		}
@@ -143,7 +143,7 @@ if ( ! function_exists( 'br_color_picker' ) ) {
 		$return        .= '<div class="berocket_color"><div class="br_colorpicker" data-default="' . $default . '" data-color="' . $value . '" style="background-color:' . $value . ';"></div>
             <input class="br_colorpicker_value' . $class . '" type="hidden" value="' . $value . '" name="' . $name . '"' . $extra . '/>';
 		if ( $default_button ) {
-			$return .= '<input type="button" value="' . __( 'Default', 'BeRocket_domain' ) . '" class="br_colorpicker_default button">';
+			$return .= '<input type="button" value="' . __( 'Default', 'Ramphor_domain' ) . '" class="br_colorpicker_default button">';
 		}
 		$return .= '</div>';
 		return $return;
@@ -170,9 +170,9 @@ if ( ! function_exists( 'br_upload_image' ) ) {
 		$result        = '<div>';
 		$result       .= '<input type="hidden" name="' . $name . '" value="' . $value . '" readonly class="berocket_image_value ' . $class . '"' . $extra . '/>
         <span class="berocket_selected_image">' . ( empty( $value ) ? '' : '<image src="' . $value . '">' ) . '</span>
-        <input type="button" class="berocket_upload_image button" value="' . __( 'Upload', 'BeRocket_domain' ) . '"/> ';
+        <input type="button" class="berocket_upload_image button" value="' . __( 'Upload', 'Ramphor_domain' ) . '"/> ';
 		if ( $remove_button ) {
-			$result .= '<input type="button" class="berocket_remove_image button" value="' . __( 'Remove', 'BeRocket_domain' ) . '"/>';
+			$result .= '<input type="button" class="berocket_remove_image button" value="' . __( 'Remove', 'Ramphor_domain' ) . '"/>';
 		}
 		$result .= '</div>';
 
@@ -220,10 +220,10 @@ if ( ! function_exists( 'br_fontawesome_image' ) ) {
 		$result       .= berocket_fa_dark();
 		$result       .= '<input type="hidden" name="' . $name . '" value="' . $value . '" readonly class="berocket_image_value berocket_fa_value ' . $class . '"' . $extra . '/>
         <span class="berocket_selected_image berocket_selected_fa">' . ( empty( $value ) ? '' : ( substr( $value, 0, 3 ) == 'fa-' ? '<i class="fa ' . $value . '"></i>' : '<image src="' . $value . '">' ) ) . '</span>
-        <input type="button" class="berocket_upload_image button" value="' . __( 'Upload', 'BeRocket_domain' ) . '"/>
-        <input type="button" class="berocket_select_fa button" value="' . __( 'Font Awesome', 'BeRocket_domain' ) . '"/>';
+        <input type="button" class="berocket_upload_image button" value="' . __( 'Upload', 'Ramphor_domain' ) . '"/>
+        <input type="button" class="berocket_select_fa button" value="' . __( 'Font Awesome', 'Ramphor_domain' ) . '"/>';
 		if ( $remove_button ) {
-			$result .= '<input type="button" class="berocket_remove_image button" value="' . __( 'Remove', 'BeRocket_domain' ) . '"/>';
+			$result .= '<input type="button" class="berocket_remove_image button" value="' . __( 'Remove', 'Ramphor_domain' ) . '"/>';
 		}
 		$result .= '</div>';
 
@@ -252,9 +252,9 @@ if ( ! function_exists( 'br_select_fontawesome' ) ) {
 		$result       .= berocket_fa_dark();
 		$result       .= '<input type="hidden" name="' . $name . '" value="' . $value . '" readonly class="berocket_fa_value ' . $class . '"' . $extra . '/>
         <span class="berocket_selected_fa">' . ( empty( $value ) ? '' : '<i class="fa ' . $value . '"></i>' ) . '</span>
-        <input type="button" class="berocket_select_fa button" value="' . __( 'Font Awesome', 'BeRocket_domain' ) . '"/> ';
+        <input type="button" class="berocket_select_fa button" value="' . __( 'Font Awesome', 'Ramphor_domain' ) . '"/> ';
 		if ( $remove_button ) {
-			$result .= '<input type="button" class="berocket_remove_fa button" value="' . __( 'Remove', 'BeRocket_domain' ) . '"/>';
+			$result .= '<input type="button" class="berocket_remove_fa button" value="' . __( 'Remove', 'Ramphor_domain' ) . '"/>';
 		}
 		$result .= '</div>';
 
@@ -281,7 +281,7 @@ if ( ! function_exists( 'br_products_selector' ) ) {
 		foreach ( $product_objects as $product_object ) {
 			$html .= '<li class="berocket_product_selected button"><input name="' . $name . '" type="hidden" value="' . $product_object->get_id() . '"><i class="fa fa-times"></i> ' . $product_object->get_formatted_name() . '</li>';
 		}
-				$html .= '<li class="berocket_product_search"' . ( ! $multiple && count( $product_objects ) > 0 ? ' style="display: none;"' : '' ) . '><input type="text" data-action="' . $action . '" class="berocket_search_input" placeholder="' . __( 'Enter 3 or more characters', 'BeRocket_domain' ) . '"></li>
+				$html .= '<li class="berocket_product_search"' . ( ! $multiple && count( $product_objects ) > 0 ? ' style="display: none;"' : '' ) . '><input type="text" data-action="' . $action . '" class="berocket_search_input" placeholder="' . __( 'Enter 3 or more characters', 'Ramphor_domain' ) . '"></li>
             </ul>
         </div>';
 		return $html;
@@ -322,14 +322,14 @@ if ( ! function_exists( 'br_condition_builder' ) ) {
 			$equal = $options['equal'];
 		}
 		$equal_list = array(
-			'equal'     => __( 'Equal', 'BeRocket_products_label_domain' ),
-			'not_equal' => __( 'Not equal', 'BeRocket_products_label_domain' ),
+			'equal'     => __( 'Equal', 'Ramphor_products_label_domain' ),
+			'not_equal' => __( 'Not equal', 'Ramphor_products_label_domain' ),
 		);
 		if ( ! empty( $extension['equal_less'] ) ) {
-			$equal_list['equal_less'] = __( 'Equal or less', 'BeRocket_products_label_domain' );
+			$equal_list['equal_less'] = __( 'Equal or less', 'Ramphor_products_label_domain' );
 		}
 		if ( ! empty( $extension['equal_more'] ) ) {
-			$equal_list['equal_more'] = __( 'Equal or more', 'BeRocket_products_label_domain' );
+			$equal_list['equal_more'] = __( 'Equal or more', 'Ramphor_products_label_domain' );
 		}
 		$html = '<select name="' . $name . '[equal]">';
 		foreach ( $equal_list as $equal_slug => $equal_name ) {
@@ -401,15 +401,15 @@ if ( ! function_exists( 'berocket_font_select_upload' ) ) {
             ' . ( ( ! empty( $value ) ) ? ( ( substr( $value, 0, 3 ) == 'fa-' ) ? '<i class="fa ' . $value . '"></i>' : '<i class="fa">
             <image src="' . $value . '" alt=""></i>' ) : '' ) . '</span>';
 		if ( $show_fa ) {
-			$result .= '<input type="button" class="berocket_aapf_font_awesome_icon_select button" value="' . __( 'Font awesome', 'BeRocket_domain' ) . '"/>
+			$result .= '<input type="button" class="berocket_aapf_font_awesome_icon_select button" value="' . __( 'Font awesome', 'Ramphor_domain' ) . '"/>
             <div style="display: none;" class="berocket_aapf_select_icon"><div><p>Font Awesome Icons<i class="fa fa-times"></i></p>
             ' . $font_awesome . '</div></div>';
 		}
 		if ( $show_upload ) {
-			$result .= '<input type="button" class="berocket_aapf_upload_icon button" value="' . __( 'Upload', 'BeRocket_domain' ) . '"/> ';
+			$result .= '<input type="button" class="berocket_aapf_upload_icon button" value="' . __( 'Upload', 'Ramphor_domain' ) . '"/> ';
 		}
 		if ( $show_remove ) {
-			$result .= '<input type="button" class="berocket_aapf_remove_icon button" value="' . __( 'Remove', 'BeRocket_domain' ) . '"/>';
+			$result .= '<input type="button" class="berocket_aapf_remove_icon button" value="' . __( 'Remove', 'Ramphor_domain' ) . '"/>';
 		}
 		$result .= '</div>';
 
@@ -1023,7 +1023,7 @@ if ( ! function_exists( 'fa_icons_list' ) ) {
 }
 
 /**
- * BeRocket Debug function
+ * Ramphor Debug function
  */
 if ( ! function_exists( 'bd' ) ) {
 	function bd( $var = '', $tag = 'pre', $die = false ) {

@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_framework_addon_lib' ) ) {
-	class BeRocket_framework_addon_lib {
+if ( ! class_exists( 'Ramphor_framework_addon_lib' ) ) {
+	class Ramphor_framework_addon_lib {
 		public $addon_file    = '';
 		public $plugin_name   = '';
 		public $php_file_name = '';

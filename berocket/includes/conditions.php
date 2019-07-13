@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_conditions' ) ) {
-	class BeRocket_conditions {
+if ( ! class_exists( 'Ramphor_conditions' ) ) {
+	class Ramphor_conditions {
 		public $conditions = array();
 		public $option_name, $hook_name;
 		public function __construct( $option_name, $hook_name, $conditions = array() ) {
@@ -88,103 +88,103 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 					'save' => 'save_condition_product',
 					'func' => 'check_condition_product',
 					'type' => 'product',
-					'name' => __( 'Product', 'BeRocket_domain' ),
+					'name' => __( 'Product', 'Ramphor_domain' ),
 				),
 				'condition_product_sale'          => array(
 					'func' => 'check_condition_product_sale',
 					'type' => 'sale',
-					'name' => __( 'On Sale', 'BeRocket_domain' ),
+					'name' => __( 'On Sale', 'Ramphor_domain' ),
 				),
 				'condition_product_bestsellers'   => array(
 					'func' => 'check_condition_product_bestsellers',
 					'type' => 'bestsellers',
-					'name' => __( 'Bestsellers', 'BeRocket_domain' ),
+					'name' => __( 'Bestsellers', 'Ramphor_domain' ),
 				),
 				'condition_product_price'         => array(
 					'func' => 'check_condition_product_price',
 					'type' => 'price',
-					'name' => __( 'Price', 'BeRocket_domain' ),
+					'name' => __( 'Price', 'Ramphor_domain' ),
 				),
 				'condition_product_stockstatus'   => array(
 					'func' => 'check_condition_product_stockstatus',
 					'type' => 'stockstatus',
-					'name' => __( 'Stock status', 'BeRocket_domain' ),
+					'name' => __( 'Stock status', 'Ramphor_domain' ),
 				),
 				'condition_product_totalsales'    => array(
 					'func' => 'check_condition_product_totalsales',
 					'type' => 'totalsales',
-					'name' => __( 'Total sales', 'BeRocket_domain' ),
+					'name' => __( 'Total sales', 'Ramphor_domain' ),
 				),
 				'condition_product_category'      => array(
 					'func' => 'check_condition_product_category',
 					'type' => 'category',
-					'name' => __( 'Category', 'BeRocket_domain' ),
+					'name' => __( 'Category', 'Ramphor_domain' ),
 				),
 				'condition_product_attribute'     => array(
 					'func' => 'check_condition_product_attribute',
 					'type' => 'attribute',
-					'name' => __( 'Product attribute', 'BeRocket_domain' ),
+					'name' => __( 'Product attribute', 'Ramphor_domain' ),
 				),
 				'condition_product_age'           => array(
 					'func' => 'check_condition_product_age',
 					'type' => 'age',
-					'name' => __( 'Product age', 'BeRocket_domain' ),
+					'name' => __( 'Product age', 'Ramphor_domain' ),
 				),
 				'condition_product_saleprice'     => array(
 					'func' => 'check_condition_product_saleprice',
 					'type' => 'saleprice',
-					'name' => __( 'Sale price', 'BeRocket_domain' ),
+					'name' => __( 'Sale price', 'Ramphor_domain' ),
 				),
 				'condition_product_regularprice'  => array(
 					'func' => 'check_condition_product_regularprice',
 					'type' => 'regularprice',
-					'name' => __( 'Regular price', 'BeRocket_domain' ),
+					'name' => __( 'Regular price', 'Ramphor_domain' ),
 				),
 				'condition_product_stockquantity' => array(
 					'func' => 'check_condition_product_stockquantity',
 					'type' => 'stockquantity',
-					'name' => __( 'Stock quantity', 'BeRocket_domain' ),
+					'name' => __( 'Stock quantity', 'Ramphor_domain' ),
 				),
 				'condition_product_featured'      => array(
 					'func' => 'check_condition_product_featured',
 					'type' => 'featured',
-					'name' => __( 'Featured', 'BeRocket_domain' ),
+					'name' => __( 'Featured', 'Ramphor_domain' ),
 				),
 				'condition_product_shippingclass' => array(
 					'func' => 'check_condition_product_shippingclass',
 					'type' => 'shippingclass',
-					'name' => __( 'Shipping Class', 'BeRocket_domain' ),
+					'name' => __( 'Shipping Class', 'Ramphor_domain' ),
 				),
 				'condition_product_type'          => array(
 					'func' => 'check_condition_product_type',
 					'type' => 'product_type',
-					'name' => __( 'Product Type', 'BeRocket_domain' ),
+					'name' => __( 'Product Type', 'Ramphor_domain' ),
 				),
 				'condition_product_rating'        => array(
 					'func' => 'check_condition_product_rating',
 					'type' => 'product_rating',
-					'name' => __( 'Product Rating', 'BeRocket_domain' ),
+					'name' => __( 'Product Rating', 'Ramphor_domain' ),
 				),
 				// PAGES
 				'condition_page_id'               => array(
 					'func' => 'check_condition_page_id',
 					'type' => 'page_id',
-					'name' => __( 'Page ID', 'BeRocket_domain' ),
+					'name' => __( 'Page ID', 'Ramphor_domain' ),
 				),
 				'condition_page_woo_attribute'    => array(
 					'func' => 'check_condition_page_woo_attribute',
 					'type' => 'woo_attribute',
-					'name' => __( 'Product Attribute', 'BeRocket_domain' ),
+					'name' => __( 'Product Attribute', 'Ramphor_domain' ),
 				),
 				'condition_page_woo_search'       => array(
 					'func' => 'check_condition_page_woo_search',
 					'type' => 'woo_search',
-					'name' => __( 'Product Search', 'BeRocket_domain' ),
+					'name' => __( 'Product Search', 'Ramphor_domain' ),
 				),
 				'condition_page_woo_category'     => array(
 					'func' => 'check_condition_page_woo_category',
 					'type' => 'woo_category',
-					'name' => __( 'Product Category', 'BeRocket_domain' ),
+					'name' => __( 'Product Category', 'Ramphor_domain' ),
 				),
 			);
 		}
@@ -198,14 +198,14 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 				$equal = $options['equal'];
 			}
 			$equal_list = array(
-				'equal'     => __( 'Equal', 'BeRocket_domain' ),
-				'not_equal' => __( 'Not equal', 'BeRocket_domain' ),
+				'equal'     => __( 'Equal', 'Ramphor_domain' ),
+				'not_equal' => __( 'Not equal', 'Ramphor_domain' ),
 			);
 			if ( ! empty( $extension['equal_less'] ) ) {
-				$equal_list['equal_less'] = __( 'Equal or less', 'BeRocket_domain' );
+				$equal_list['equal_less'] = __( 'Equal or less', 'Ramphor_domain' );
 			}
 			if ( ! empty( $extension['equal_more'] ) ) {
-				$equal_list['equal_more'] = __( 'Equal or more', 'BeRocket_domain' );
+				$equal_list['equal_more'] = __( 'Equal or more', 'Ramphor_domain' );
 			}
 			$html = '<select name="' . $name . '[equal]">';
 			foreach ( $equal_list as $equal_slug => $equal_name ) {
@@ -251,9 +251,9 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 		public static function condition_product_sale( $html, $name, $options ) {
 			$def_options = array( 'sale' => 'yes' );
 			$options     = array_merge( $def_options, $options );
-			$html       .= '<label>' . __( 'Is on sale', 'BeRocket_domain' ) . '<select name="' . $name . '[sale]">
-                <option value="yes"' . ( $options['sale'] == 'yes' ? ' selected' : '' ) . '>' . __( 'Yes', 'BeRocket_domain' ) . '</option>
-                <option value="no"' . ( $options['sale'] == 'no' ? ' selected' : '' ) . '>' . __( 'No', 'BeRocket_domain' ) . '</option>
+			$html       .= '<label>' . __( 'Is on sale', 'Ramphor_domain' ) . '<select name="' . $name . '[sale]">
+                <option value="yes"' . ( $options['sale'] == 'yes' ? ' selected' : '' ) . '>' . __( 'Yes', 'Ramphor_domain' ) . '</option>
+                <option value="no"' . ( $options['sale'] == 'no' ? ' selected' : '' ) . '>' . __( 'No', 'Ramphor_domain' ) . '</option>
             </select></label>';
 			return $html;
 		}
@@ -261,7 +261,7 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 		public static function condition_product_bestsellers( $html, $name, $options ) {
 			$def_options = array( 'bestsellers' => '1' );
 			$options     = array_merge( $def_options, $options );
-			$html       .= '<label>' . __( 'Count of product', 'BeRocket_domain' ) . '<input type="number" min="1" name="' . $name . '[bestsellers]" value="' . $options['bestsellers'] . '"></label>';
+			$html       .= '<label>' . __( 'Count of product', 'Ramphor_domain' ) . '<input type="number" min="1" name="' . $name . '[bestsellers]" value="' . $options['bestsellers'] . '"></label>';
 			return $html;
 		}
 
@@ -309,10 +309,10 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 		public static function condition_product_rating( $html, $name, $options ) {
 			$def_options = array( 'has_rating' => '' );
 			$options     = array_merge( $def_options, $options );
-			$html       .= __( 'Has Rating:', 'BeRocket_domain' );
+			$html       .= __( 'Has Rating:', 'Ramphor_domain' );
 			$html       .= '<select name="' . $name . '[has_rating]">';
-			$html       .= '<option value=""' . ( $options['has_rating'] == '' ? ' selected' : '' ) . '>' . __( 'Yes', 'BeRocket_domain' ) . '</option>';
-			$html       .= '<option value="no"' . ( $options['has_rating'] == 'no' ? ' selected' : '' ) . '>' . __( 'No', 'BeRocket_domain' ) . '</option>';
+			$html       .= '<option value=""' . ( $options['has_rating'] == '' ? ' selected' : '' ) . '>' . __( 'Yes', 'Ramphor_domain' ) . '</option>';
+			$html       .= '<option value="no"' . ( $options['has_rating'] == 'no' ? ' selected' : '' ) . '>' . __( 'No', 'Ramphor_domain' ) . '</option>';
 			$html       .= '</select>';
 			return $html;
 		}
@@ -331,12 +331,12 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 			}
 			$options['price'] = array_merge( $def_options['price'], $options['price'] );
 			$html            .= static::supcondition( $name, $options );
-			$html            .= __( 'From:', 'BeRocket_domain' ) . '<input class="price_from" type="number" min="0" name="' . $name . '[price][from]" value="' . $options['price']['from'] . '">' .
-					 __( 'To:', 'BeRocket_domain' ) . '<input class="price_to"   type="number" min="1" name="' . $name . '[price][to]"   value="' . $options['price']['to'] . '">';
+			$html            .= __( 'From:', 'Ramphor_domain' ) . '<input class="price_from" type="number" min="0" name="' . $name . '[price][from]" value="' . $options['price']['from'] . '">' .
+					 __( 'To:', 'Ramphor_domain' ) . '<input class="price_to"   type="number" min="1" name="' . $name . '[price][to]"   value="' . $options['price']['to'] . '">';
 			$tax_type         = array(
-				'product_price' => __( 'Product price', 'BeRocket_domain' ),
-				'with_tax'      => __( 'With tax', 'BeRocket_domain' ),
-				'without_tax'   => __( 'Without tax', 'BeRocket_domain' ),
+				'product_price' => __( 'Product price', 'Ramphor_domain' ),
+				'with_tax'      => __( 'With tax', 'Ramphor_domain' ),
+				'without_tax'   => __( 'Without tax', 'Ramphor_domain' ),
 			);
 			$html            .= '<select name="' . $name . '[price_tax]">';
 			foreach ( $tax_type as $tax_type_val => $tax_type_name ) {
@@ -351,9 +351,9 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 			$options     = array_merge( $def_options, $options );
 			$html       .= '
             <select name="' . $name . '[stockstatus]">
-                <option value="in_stock"' . ( $options['stockstatus'] == 'in_stock' ? ' selected' : '' ) . '>' . __( 'In stock', 'BeRocket_domain' ) . '</option>
-                <option value="out_of_stock"' . ( $options['stockstatus'] == 'out_of_stock' ? ' selected' : '' ) . '>' . __( 'Out of stock', 'BeRocket_domain' ) . '</option>
-                <option value="is_on_backorder"' . ( $options['stockstatus'] == 'is_on_backorder' ? ' selected' : '' ) . '>' . __( 'On Backorder', 'BeRocket_domain' ) . '</option>
+                <option value="in_stock"' . ( $options['stockstatus'] == 'in_stock' ? ' selected' : '' ) . '>' . __( 'In stock', 'Ramphor_domain' ) . '</option>
+                <option value="out_of_stock"' . ( $options['stockstatus'] == 'out_of_stock' ? ' selected' : '' ) . '>' . __( 'Out of stock', 'Ramphor_domain' ) . '</option>
+                <option value="is_on_backorder"' . ( $options['stockstatus'] == 'is_on_backorder' ? ' selected' : '' ) . '>' . __( 'On Backorder', 'Ramphor_domain' ) . '</option>
             </select>';
 			return $html;
 		}
@@ -369,7 +369,7 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 					'equal_more' => true,
 				)
 			);
-			$html       .= '<label>' . __( 'Count of product', 'BeRocket_domain' ) . '<input type="number" min="0" name="' . $name . '[totalsales]" value="' . $options['totalsales'] . '"></label>';
+			$html       .= '<label>' . __( 'Count of product', 'Ramphor_domain' ) . '<input type="number" min="0" name="' . $name . '[totalsales]" value="' . $options['totalsales'] . '"></label>';
 			return $html;
 		}
 
@@ -389,7 +389,7 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 				$def_options = array( 'category' => '' );
 				$options     = array_merge( $def_options, $options );
 				$html       .= static::supcondition( $name, $options );
-				$html       .= '<label><input type="checkbox" name="' . $name . '[subcats]" value="1"' . ( empty( $options['subcats'] ) ? '' : ' checked' ) . '>' . __( 'Include subcategories', 'BeRocket_domain' ) . '</label>';
+				$html       .= '<label><input type="checkbox" name="' . $name . '[subcats]" value="1"' . ( empty( $options['subcats'] ) ? '' : ' checked' ) . '>' . __( 'Include subcategories', 'Ramphor_domain' ) . '</label>';
 				$html       .= '<div style="max-height:150px;overflow:auto;border:1px solid #ccc;padding: 5px;">';
 				foreach ( $product_categories as $category ) {
 					$html .= '<div><label>
@@ -424,7 +424,7 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 				$product_attributes[] = $attribute_i;
 			}
 			$html             .= static::supcondition( $name, $options );
-			$html             .= '<label>' . __( 'Select attribute', 'BeRocket_domain' ) . '</label>';
+			$html             .= '<label>' . __( 'Select attribute', 'Ramphor_domain' ) . '</label>';
 			$html             .= '<select name="' . $name . '[attribute]" class="br_cond_attr_select">';
 			$has_selected_attr = false;
 			foreach ( $product_attributes as $attribute ) {
@@ -458,7 +458,7 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 					'equal_more' => true,
 				)
 			);
-			$html       .= '<input type="number" min="0" name="' . $name . '[age]" value="' . $options['age'] . '">' . __( 'day(s)', 'BeRocket_domain' );
+			$html       .= '<input type="number" min="0" name="' . $name . '[age]" value="' . $options['age'] . '">' . __( 'day(s)', 'Ramphor_domain' );
 			return $html;
 		}
 
@@ -475,8 +475,8 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 			}
 			$options['price'] = array_merge( $def_options['saleprice'], $options['saleprice'] );
 			$html            .= br_supcondition_equal( $name, $options );
-			$html            .= __( 'From:', 'BeRocket_domain' ) . '<input class="price_from" type="number" min="0" name="' . $name . '[saleprice][from]" value="' . $options['saleprice']['from'] . '">' .
-					 __( 'To:', 'BeRocket_domain' ) . '<input class="price_to"   type="number" min="1" name="' . $name . '[saleprice][to]"   value="' . $options['saleprice']['to'] . '">';
+			$html            .= __( 'From:', 'Ramphor_domain' ) . '<input class="price_from" type="number" min="0" name="' . $name . '[saleprice][from]" value="' . $options['saleprice']['from'] . '">' .
+					 __( 'To:', 'Ramphor_domain' ) . '<input class="price_to"   type="number" min="1" name="' . $name . '[saleprice][to]"   value="' . $options['saleprice']['to'] . '">';
 			return $html;
 		}
 
@@ -493,8 +493,8 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 			}
 			$options['price'] = array_merge( $def_options['regularprice'], $options['regularprice'] );
 			$html            .= br_supcondition_equal( $name, $options );
-			$html            .= __( 'From:', 'BeRocket_domain' ) . '<input class="price_from" type="number" min="0" name="' . $name . '[regularprice][from]" value="' . $options['regularprice']['from'] . '">' .
-					 __( 'To:', 'BeRocket_domain' ) . '<input class="price_to"   type="number" min="1" name="' . $name . '[regularprice][to]"   value="' . $options['regularprice']['to'] . '">';
+			$html            .= __( 'From:', 'Ramphor_domain' ) . '<input class="price_from" type="number" min="0" name="' . $name . '[regularprice][from]" value="' . $options['regularprice']['from'] . '">' .
+					 __( 'To:', 'Ramphor_domain' ) . '<input class="price_to"   type="number" min="1" name="' . $name . '[regularprice][to]"   value="' . $options['regularprice']['to'] . '">';
 			return $html;
 		}
 
@@ -512,12 +512,12 @@ if ( ! class_exists( 'BeRocket_conditions' ) ) {
 					'equal_more' => true,
 				)
 			);
-			$html       .= __( 'Products in stock', 'BeRocket_domain' );
+			$html       .= __( 'Products in stock', 'Ramphor_domain' );
 			$html       .= '<input type="number" min="0" name="' . $name . '[stockquantity]" value="' . $options['stockquantity'] . '">';
-			$html       .= '<label>' . __( 'Backorder allowed', 'BeRocket_domain' ) . ' <select name="' . $name . '[backorder]">
-                <option value="any"' . ( $options['backorder'] == 'any' ? ' selected' : '' ) . '>' . __( 'Any', 'BeRocket_domain' ) . '</option>
-                <option value="yes"' . ( $options['backorder'] == 'yes' ? ' selected' : '' ) . '>' . __( 'Yes', 'BeRocket_domain' ) . '</option>
-                <option value="no"' . ( $options['backorder'] == 'no' ? ' selected' : '' ) . '>' . __( 'No', 'BeRocket_domain' ) . '</option>
+			$html       .= '<label>' . __( 'Backorder allowed', 'Ramphor_domain' ) . ' <select name="' . $name . '[backorder]">
+                <option value="any"' . ( $options['backorder'] == 'any' ? ' selected' : '' ) . '>' . __( 'Any', 'Ramphor_domain' ) . '</option>
+                <option value="yes"' . ( $options['backorder'] == 'yes' ? ' selected' : '' ) . '>' . __( 'Yes', 'Ramphor_domain' ) . '</option>
+                <option value="no"' . ( $options['backorder'] == 'no' ? ' selected' : '' ) . '>' . __( 'No', 'Ramphor_domain' ) . '</option>
             </select></label>';
 			return $html;
 		}

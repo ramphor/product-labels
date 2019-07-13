@@ -1,7 +1,7 @@
 <?php
-define( 'BeRocket_products_label_domain', 'BeRocket_products_label_domain' );
+define( 'Ramphor_products_label_domain', 'Ramphor_products_label_domain' );
 define( 'products_label_TEMPLATE_PATH', plugin_dir_path( __FILE__ ) . 'templates/' );
-load_plugin_textdomain( 'BeRocket_products_label_domain', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+load_plugin_textdomain( 'Ramphor_products_label_domain', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 require_once plugin_dir_path( __FILE__ ) . 'berocket/framework.php';
 foreach ( glob( __DIR__ . '/includes/*.php' ) as $filename ) {
 	include_once $filename;
@@ -10,16 +10,16 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'includes/compatibility/*.php' ) a
 	include_once $filename;
 }
 /**
- * Class BeRocket_products_label
+ * Class Ramphor_products_label
  * REPLACE
  * products_label - plugin name
  * Products Labels - normal plugin name
  * WooCommerce Advanced Product Labels - full plugin name
- * 18 - id on BeRocket
- * woocommerce-advanced-product-labels - slug on BeRocket
- * 24 - price on BeRocket
+ * 18 - id on Ramphor
+ * woocommerce-advanced-product-labels - slug on Ramphor
+ * 24 - price on Ramphor
  */
-class BeRocket_products_label extends BeRocket_Framework {
+class Ramphor_products_label extends Ramphor_Framework {
 	public static $settings_name = 'br-products_label-options';
 	protected static $instance;
 	public $info, $defaults, $values;
@@ -30,7 +30,7 @@ class BeRocket_products_label extends BeRocket_Framework {
 		$this->info = array(
 			'id'          => 18,
 			'lic_id'      => 35,
-			'version'     => BeRocket_products_label_version,
+			'version'     => Ramphor_products_label_version,
 			'plugin'      => '',
 			'slug'        => '',
 			'key'         => '',
@@ -39,9 +39,9 @@ class BeRocket_products_label extends BeRocket_Framework {
 			'full_name'   => 'WooCommerce Advanced Product Labels',
 			'norm_name'   => 'Products Labels',
 			'price'       => '24',
-			'domain'      => 'BeRocket_products_label_domain',
+			'domain'      => 'Ramphor_products_label_domain',
 			'templates'   => products_label_TEMPLATE_PATH,
-			'plugin_file' => BeRocket_products_label_file,
+			'plugin_file' => Ramphor_products_label_file,
 			'plugin_dir'  => __DIR__,
 		);
 
@@ -83,12 +83,12 @@ class BeRocket_products_label extends BeRocket_Framework {
 			$this->include_once_files();
 		}
 		if ( $this->init_validation() ) {
-			new BeRocket_advanced_labels_custom_post();
+			new Ramphor_advanced_labels_custom_post();
 		}
 		$this->framework_data['fontawesome_frontend'] = true;
 		parent::__construct( $this );
 		if ( $this->init_validation() ) {
-			$this->custom_post = BeRocket_advanced_labels_custom_post::getInstance();
+			$this->custom_post = Ramphor_advanced_labels_custom_post::getInstance();
 			add_action( 'woocommerce_product_write_panel_tabs', array( $this, 'product_edit_advanced_label' ) );
 			if ( version_compare( br_get_woocommerce_version(), '2.7', '>=' ) ) {
 				add_action( 'woocommerce_product_data_panels', array( $this, 'product_edit_tab' ) );
@@ -97,7 +97,7 @@ class BeRocket_products_label extends BeRocket_Framework {
 			}
 			add_action( 'wp_ajax_br_label_ajax_demo', array( $this, 'ajax_get_label' ) );
 			add_action( 'wp_footer', array( $this, 'page_load_script' ) );
-			add_filter( 'BeRocket_updater_menu_order_custom_post', array( $this, 'menu_order_custom_post' ) );
+			add_filter( 'Ramphor_updater_menu_order_custom_post', array( $this, 'menu_order_custom_post' ) );
 		}
 	}
 	public function init_validation() {
@@ -152,14 +152,14 @@ class BeRocket_products_label extends BeRocket_Framework {
 			'berocket_products_label_style',
 			plugins_url( 'css/frontend.css', __FILE__ ),
 			'',
-			BeRocket_products_label_version
+			Ramphor_products_label_version
 		);
 		wp_enqueue_style( 'berocket_products_label_style' );
 		wp_register_style(
 			'berocket_tippy',
 			plugins_url( 'css/tippy.css', __FILE__ ),
 			'',
-			BeRocket_products_label_version
+			Ramphor_products_label_version
 		);
 		wp_register_script( 'berocket_tippy', plugins_url( 'js/tippy.min.js', __FILE__ ), array( 'jquery' ), $this->info['version'] );
 
@@ -257,7 +257,7 @@ class BeRocket_products_label extends BeRocket_Framework {
 			if ( defined( 'WCML_VERSION' ) && defined( 'ICL_LANGUAGE_CODE' ) ) {
 				$suppress_filters = false;
 			}
-			$BeRocket_advanced_labels_custom_post = BeRocket_advanced_labels_custom_post::getInstance();
+			$Ramphor_advanced_labels_custom_post = Ramphor_advanced_labels_custom_post::getInstance();
 			$args                                 = apply_filters(
 				'berocket_labels_get_args',
 				array(
@@ -266,7 +266,7 @@ class BeRocket_products_label extends BeRocket_Framework {
 					'suppress_filters' => $suppress_filters,
 				)
 			);
-			$this->labels_ids                     = $BeRocket_advanced_labels_custom_post->get_custom_posts( $args );
+			$this->labels_ids                     = $Ramphor_advanced_labels_custom_post->get_custom_posts( $args );
 		}
 		return $this->labels_ids;
 	}
@@ -282,17 +282,17 @@ class BeRocket_products_label extends BeRocket_Framework {
 		wp_die();
 	}
 	public function product_edit_advanced_label() {
-		echo '<li class="product_tab_manager"><a href="#br_alabel">' . __( 'Advanced label', 'BeRocket_tab_manager_domain' ) . '</a></li>';
+		echo '<li class="product_tab_manager"><a href="#br_alabel">' . __( 'Advanced label', 'Ramphor_tab_manager_domain' ) . '</a></li>';
 	}
 	public function load_admin_edit_scripts() {
 		// GET CUSTOM POST DATA
-		$BeRocket_advanced_labels_custom_post = BeRocket_advanced_labels_custom_post::getInstance();
-		$custom_post_default_settings         = $BeRocket_advanced_labels_custom_post->get_default_template_settings();
-		$custom_post_set_default              = $BeRocket_advanced_labels_custom_post->get_default_template_settings( false );
-		$custom_post_default_settings_names   = $BeRocket_advanced_labels_custom_post->default_settings;
+		$Ramphor_advanced_labels_custom_post = Ramphor_advanced_labels_custom_post::getInstance();
+		$custom_post_default_settings         = $Ramphor_advanced_labels_custom_post->get_default_template_settings();
+		$custom_post_set_default              = $Ramphor_advanced_labels_custom_post->get_default_template_settings( false );
+		$custom_post_default_settings_names   = $Ramphor_advanced_labels_custom_post->default_settings;
 		$custom_post_default_settings_names   = array_keys( $custom_post_default_settings_names );
 		// REGISTER ADMIN SCRIPTS
-		wp_register_script( 'berocket_products_label_admin', plugins_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), BeRocket_products_label_version );
+		wp_register_script( 'berocket_products_label_admin', plugins_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), Ramphor_products_label_version );
 
 		wp_localize_script(
 			'berocket_products_label_admin',
@@ -580,7 +580,7 @@ class BeRocket_products_label extends BeRocket_Framework {
 		$product_id = br_wc_get_product_id( $product );
 		$show_label = wp_cache_get( 'WC_Product_' . $product_id, 'brapl_' . $label_id );
 		if ( $show_label === false ) {
-			$show_label = BeRocket_conditions_advanced_labels::check(
+			$show_label = Ramphor_conditions_advanced_labels::check(
 				$label_data,
 				'berocket_advanced_label_editor',
 				array(
@@ -616,27 +616,27 @@ class BeRocket_products_label extends BeRocket_Framework {
 		$shop_hook_array = array(
 			array(
 				'value' => 'woocommerce_before_shop_loop_item_title+15',
-				'text'  => __( 'Before Title 1', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Before Title 1', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_shop_loop_item_title+5',
-				'text'  => __( 'Before Title 2', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Before Title 2', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_after_shop_loop_item_title+5',
-				'text'  => __( 'After Title', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After Title', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_before_shop_loop_item+5',
-				'text'  => __( 'Before All', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Before All', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_after_shop_loop_item+500',
-				'text'  => __( 'After All', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After All', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'berocket_disabled_label_hook_shop+10',
-				'text'  => __( '=DISABLED=', 'BeRocket_products_label_domain' ),
+				'text'  => __( '=DISABLED=', 'Ramphor_products_label_domain' ),
 			),
 		);
 		$shop_hook_array = $this->add_additional_hooks( $shop_hook_array, $options['shop_hook'], 'content', 'product' );
@@ -644,62 +644,62 @@ class BeRocket_products_label extends BeRocket_Framework {
 		$single_hook_array_image = array(
 			array(
 				'value' => 'woocommerce_product_thumbnails+15',
-				'text'  => __( 'Under thumbnails', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Under thumbnails', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_before_single_product_summary+50',
-				'text'  => __( 'After Images', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After Images', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_single_product_summary+2',
-				'text'  => __( 'Before Summary Data', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Before Summary Data', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_single_product_summary+7',
-				'text'  => __( 'After Title', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After Title', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_single_product_summary+100',
-				'text'  => __( 'After Summary Data', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After Summary Data', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_before_single_product_summary+5',
-				'text'  => __( 'Before All', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Before All', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'berocket_disabled_label_hook_image+10',
-				'text'  => __( '=DISABLED=', 'BeRocket_products_label_domain' ),
+				'text'  => __( '=DISABLED=', 'Ramphor_products_label_domain' ),
 			),
 		);
 		$single_hook_array_image = $this->add_additional_hooks( $single_hook_array_image, $options['product_hook_image'], 'content', 'single-product' );
 		$single_hook_array_label = array(
 			array(
 				'value' => 'woocommerce_product_thumbnails+10',
-				'text'  => __( 'Under thumbnails', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Under thumbnails', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_before_single_product_summary+50',
-				'text'  => __( 'After Images', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After Images', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_single_product_summary+2',
-				'text'  => __( 'Before Summary Data', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Before Summary Data', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_single_product_summary+7',
-				'text'  => __( 'After Title', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After Title', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_single_product_summary+100',
-				'text'  => __( 'After Summary Data', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'After Summary Data', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'woocommerce_before_single_product_summary+5',
-				'text'  => __( 'Before All', 'BeRocket_products_label_domain' ),
+				'text'  => __( 'Before All', 'Ramphor_products_label_domain' ),
 			),
 			array(
 				'value' => 'berocket_disabled_label_hook_labels+10',
-				'text'  => __( '=DISABLED=', 'BeRocket_products_label_domain' ),
+				'text'  => __( '=DISABLED=', 'Ramphor_products_label_domain' ),
 			),
 		);
 		$single_hook_array_label = $this->add_additional_hooks( $single_hook_array_label, $options['product_hook_label'], 'content', 'single-product' );
@@ -731,28 +731,28 @@ class BeRocket_products_label extends BeRocket_Framework {
 				'General'    => array(
 					'disable_labels'  => array(
 						'type'     => 'checkbox',
-						'label'    => __( 'Disable global labels', 'BeRocket_products_label_domain' ),
+						'label'    => __( 'Disable global labels', 'Ramphor_products_label_domain' ),
 						'name'     => 'disable_labels',
 						'value'    => '1',
 						'selected' => false,
 					),
 					'disable_plabels' => array(
 						'type'     => 'checkbox',
-						'label'    => __( 'Disable product labels', 'BeRocket_products_label_domain' ),
+						'label'    => __( 'Disable product labels', 'Ramphor_products_label_domain' ),
 						'name'     => 'disable_plabels',
 						'value'    => '1',
 						'selected' => false,
 					),
 					'disable_ppage'   => array(
 						'type'     => 'checkbox',
-						'label'    => __( 'Disable labels on product page', 'BeRocket_products_label_domain' ),
+						'label'    => __( 'Disable labels on product page', 'Ramphor_products_label_domain' ),
 						'name'     => 'disable_ppage',
 						'value'    => '1',
 						'selected' => false,
 					),
 					'remove_sale'     => array(
 						'type'     => 'checkbox',
-						'label'    => __( 'Remove default sale label', 'BeRocket_products_label_domain' ),
+						'label'    => __( 'Remove default sale label', 'Ramphor_products_label_domain' ),
 						'name'     => 'remove_sale',
 						'value'    => '1',
 						'selected' => false,
@@ -760,32 +760,32 @@ class BeRocket_products_label extends BeRocket_Framework {
 				),
 				'CSS'        => array(
 					'global_font_awesome_disable' => array(
-						'label'     => __( 'Disable Font Awesome', 'BeRocket_AJAX_domain' ),
+						'label'     => __( 'Disable Font Awesome', 'Ramphor_AJAX_domain' ),
 						'type'      => 'checkbox',
 						'name'      => 'fontawesome_frontend_disable',
 						'value'     => '1',
-						'label_for' => __( 'Don\'t loading css file for Font Awesome on site front end. Use it only if you doesn\'t uses Font Awesome icons in widgets or you have Font Awesome in your theme.', 'BeRocket_AJAX_domain' ),
+						'label_for' => __( 'Don\'t loading css file for Font Awesome on site front end. Use it only if you doesn\'t uses Font Awesome icons in widgets or you have Font Awesome in your theme.', 'Ramphor_AJAX_domain' ),
 					),
 					'global_fontawesome_version'  => array(
-						'label'     => __( 'Font Awesome Version', 'BeRocket_AJAX_domain' ),
+						'label'     => __( 'Font Awesome Version', 'Ramphor_AJAX_domain' ),
 						'name'      => 'fontawesome_frontend_version',
 						'type'      => 'selectbox',
 						'options'   => array(
 							array(
 								'value' => '',
-								'text'  => __( 'Font Awesome 4', 'BeRocket_AJAX_domain' ),
+								'text'  => __( 'Font Awesome 4', 'Ramphor_AJAX_domain' ),
 							),
 							array(
 								'value' => 'fontawesome5',
-								'text'  => __( 'Font Awesome 5', 'BeRocket_AJAX_domain' ),
+								'text'  => __( 'Font Awesome 5', 'Ramphor_AJAX_domain' ),
 							),
 						),
 						'value'     => '',
-						'label_for' => __( 'Version of Font Awesome that will be used on front end. Please select version that you have in your theme', 'BeRocket_AJAX_domain' ),
+						'label_for' => __( 'Version of Font Awesome that will be used on front end. Please select version that you have in your theme', 'Ramphor_AJAX_domain' ),
 					),
 					array(
 						'type'  => 'textarea',
-						'label' => __( 'Custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'custom_css',
 						'class' => 'berocket_custom_css',
 					),
@@ -794,24 +794,24 @@ class BeRocket_products_label extends BeRocket_Framework {
 					'shop_hook'             => array(
 						'type'      => 'selectbox',
 						'options'   => $shop_hook_array,
-						'label'     => __( 'Shop Hook', 'BeRocket_products_label_domain' ),
-						'label_for' => __( 'Where labels will be displayed on shop page. In different theme it can be different place(This means that it is supposed to be in this place)', 'BeRocket_products_label_domain' ),
+						'label'     => __( 'Shop Hook', 'Ramphor_products_label_domain' ),
+						'label_for' => __( 'Where labels will be displayed on shop page. In different theme it can be different place(This means that it is supposed to be in this place)', 'Ramphor_products_label_domain' ),
 						'name'      => 'shop_hook',
 						'value'     => $this->defaults['shop_hook'],
 					),
 					'product_hook_image'    => array(
 						'type'      => 'selectbox',
 						'options'   => $single_hook_array_image,
-						'label'     => __( 'Product Hook Image', 'BeRocket_products_label_domain' ),
-						'label_for' => __( 'Where on image labels will be displayed on product page. In different theme it can be different place(This means that it is supposed to be in this place)', 'BeRocket_products_label_domain' ),
+						'label'     => __( 'Product Hook Image', 'Ramphor_products_label_domain' ),
+						'label_for' => __( 'Where on image labels will be displayed on product page. In different theme it can be different place(This means that it is supposed to be in this place)', 'Ramphor_products_label_domain' ),
 						'name'      => 'product_hook_image',
 						'value'     => $this->defaults['product_hook_image'],
 					),
 					'product_hook_label'    => array(
 						'type'      => 'selectbox',
 						'options'   => $single_hook_array_label,
-						'label'     => __( 'Product Hook Label', 'BeRocket_products_label_domain' ),
-						'label_for' => __( 'Where default labels will be displayed on product page. In different theme it can be different place(This means that it is supposed to be in this place)', 'BeRocket_products_label_domain' ),
+						'label'     => __( 'Product Hook Label', 'Ramphor_products_label_domain' ),
+						'label_for' => __( 'Where default labels will be displayed on product page. In different theme it can be different place(This means that it is supposed to be in this place)', 'Ramphor_products_label_domain' ),
 						'name'      => 'product_hook_label',
 						'value'     => $this->defaults['product_hook_label'],
 					),
@@ -823,7 +823,7 @@ class BeRocket_products_label extends BeRocket_Framework {
 				'JavaScript' => array(
 					array(
 						'type'  => 'textarea',
-						'label' => __( 'On Page Load', 'BeRocket_products_label_domain' ),
+						'label' => __( 'On Page Load', 'Ramphor_products_label_domain' ),
 						'name'  => array( 'script', 'js_page_load' ),
 						'value' => '',
 						'class' => 'berocket_custom_javascript',
@@ -908,7 +908,7 @@ class BeRocket_products_label extends BeRocket_Framework {
 	}
 }
 
-new BeRocket_products_label();
+new Ramphor_products_label();
 
 berocket_admin_notices::generate_subscribe_notice();
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bundle>
-  <domain name="BeRocket_products_label_domain">
+  <domain name="Ramphor_products_label_domain">
     <project>
       <source>
         <exclude>
@@ -14,8 +14,8 @@
       </template>
     </project>
   </domain>
-  <domain name="BeRocket_domain">
-    <project name="BeRocket framework">
+  <domain name="Ramphor_domain">
+    <project name="Ramphor framework">
       <source>
         <directory>berocket</directory>
       </source>

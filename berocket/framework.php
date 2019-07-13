@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_Framework' ) && ! function_exists( 'BeRocket_Framework_load_newest' ) ) {
-	function BeRocket_Framework_load_newest() {
+if ( ! class_exists( 'Ramphor_Framework' ) && ! function_exists( 'Ramphor_Framework_load_newest' ) ) {
+	function Ramphor_Framework_load_newest() {
 		$active_plugins    = get_option( 'active_plugins' );
 		$framework_version = '0';
 		$framework_dir     = false;
@@ -14,14 +14,14 @@ if ( ! class_exists( 'BeRocket_Framework' ) && ! function_exists( 'BeRocket_Fram
 			include_once $framework_dir . '/framework.php';
 		}
 	}
-	BeRocket_Framework_load_newest();
+	Ramphor_Framework_load_newest();
 }
-if ( ! class_exists( 'BeRocket_Framework' ) ) {
-	if ( ! defined( 'BeRocket_framework_file' ) ) {
-		define( 'BeRocket_framework_file', __FILE__ );
+if ( ! class_exists( 'Ramphor_Framework' ) ) {
+	if ( ! defined( 'Ramphor_framework_file' ) ) {
+		define( 'Ramphor_framework_file', __FILE__ );
 	}
-	if ( ! defined( 'BeRocket_framework_dir' ) ) {
-		define( 'BeRocket_framework_dir', __DIR__ );
+	if ( ! defined( 'Ramphor_framework_dir' ) ) {
+		define( 'Ramphor_framework_dir', __DIR__ );
 	}
 	require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 	require_once plugin_dir_path( __FILE__ ) . 'includes/updater.php';
@@ -32,8 +32,8 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/plugin-variation.php';
 	require_once plugin_dir_path( __FILE__ ) . 'includes/libraries.php';
 	include_once ABSPATH . 'wp-admin/includes/plugin.php';
-	load_plugin_textdomain( 'BeRocket_domain', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-	class BeRocket_Framework {
+	load_plugin_textdomain( 'Ramphor_domain', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	class Ramphor_Framework {
 		public static $framework_version = '2.5.2';
 		public static $settings_name     = '';
 		public $addons;
@@ -65,7 +65,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 			}
 			$this->include_once_files();
 			$this->cc = $child; // Child Class object
-			do_action( 'BeRocket_framework_init_plugin', $this->cc->info );
+			do_action( 'Ramphor_framework_init_plugin', $this->cc->info );
 			$this->plugin_version_capability = apply_filters( 'brfr_plugin_version_capability_' . $this->cc->info['plugin_name'], $this->plugin_version_capability, $this );
 			if ( $this->plugin_version_capability == 15 && is_admin() ) {
 				$is_active_plugin = get_transient( 'berocket_framework_plugin_is_active_' . $this->info['id'] );
@@ -87,7 +87,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 
 			register_activation_hook( $this->cc->info['plugin_file'], array( $this->cc, 'activation' ) );
 			register_uninstall_hook( $this->cc->info['plugin_file'], array( get_class( $this->cc ), 'deactivation' ) );
-			add_filter( 'BeRocket_updater_add_plugin', array( $this->cc, 'updater_info' ) );
+			add_filter( 'Ramphor_updater_add_plugin', array( $this->cc, 'updater_info' ) );
 			add_filter( 'berocket_admin_notices_rate_stars_plugins', array( $this, 'rate_stars_plugins' ) );
 
 			if ( $this->cc->init_validation() ) {
@@ -117,8 +117,8 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 				if ( empty( $this->plugin_version_capability ) || $this->plugin_version_capability < 10 ) {
 					add_filter( 'berocket_admin_notices_subscribe_plugins', array( $this, 'admin_notices_subscribe_plugins' ) );
 				}
-				$this->libraries = new BeRocket_framework_libraries( $this->active_libraries, $this->info, $this->values, $this->get_option() );
-				add_filter( 'BeRocket_admin_init_user_capabilities', array( $this, 'init_user_capabilities' ) );
+				$this->libraries = new Ramphor_framework_libraries( $this->active_libraries, $this->info, $this->values, $this->get_option() );
+				add_filter( 'Ramphor_admin_init_user_capabilities', array( $this, 'init_user_capabilities' ) );
 			}
 			do_action( $this->info['plugin_name'] . '_framework_construct', $this->cc );
 			add_filter( 'brfr_get_plugin_version_capability_' . $this->cc->info['plugin_name'], array( $this, 'get_plugin_version_capability' ) );
@@ -131,7 +131,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 		public function init_check_lib() {
 			if ( empty( $this->check_lib ) ) {
 				include_once 'libraries/check_init.php';
-				$this->check_lib = new BeRocket_framework_check_init_lib( $this->check_init_array );
+				$this->check_lib = new Ramphor_framework_check_init_lib( $this->check_init_array );
 			}
 		}
 		public function get_plugin_version_capability( $version ) {
@@ -162,7 +162,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 		}
 
 		/**
-		 * Get plugin data from BeRocket
+		 * Get plugin data from Ramphor
 		 *
 		 * @return array
 		 */
@@ -221,7 +221,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 		}
 
 		/**
-		 * Filter for BeRocket updater
+		 * Filter for Ramphor updater
 		 */
 		public function updater_info( $plugins ) {
 			$option = $this->get_option();
@@ -260,8 +260,8 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 		public function plugin_action_links( $links ) {
 			$action_links = array(
 				'settings' => '<a href="' . admin_url( 'admin.php?page=' . $this->cc->values['option_page'] ) .
-							  '" title="' . __( 'View Plugin Settings', 'BeRocket_domain' ) . '">' .
-							  __( 'Settings', 'BeRocket_domain' ) . '</a>',
+							  '" title="' . __( 'View Plugin Settings', 'Ramphor_domain' ) . '">' .
+							  __( 'Settings', 'Ramphor_domain' ) . '</a>',
 			);
 
 			return apply_filters( 'brfr_action_link_' . $this->cc->info['plugin_name'], array_merge( $action_links, $links ) );
@@ -281,23 +281,23 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 				$row_meta = array(
 					'docs' => '<a href="https://berocket.com/docs/plugin/' .
 								 $this->cc->values['premium_slug'] . $meta_data . '" title="' .
-								 __( 'View Plugin Documentation', 'BeRocket_domain' ) .
-								 '" target="_blank">' . __( 'Docs', 'BeRocket_domain' ) . '</a>',
+								 __( 'View Plugin Documentation', 'Ramphor_domain' ) .
+								 '" target="_blank">' . __( 'Docs', 'Ramphor_domain' ) . '</a>',
 				);
 				if ( ! empty( $this->plugin_version_capability ) && $this->plugin_version_capability == 3 ) {
 					if ( ! empty( $this->cc->values['free_slug'] ) ) {
 						$row_meta['support'] = '<a href="https://wordpress.org/support/plugin/' . $this->cc->values['free_slug'] .
-								 '/' . $meta_data . '" title="' . __( 'View Support Page', 'BeRocket_domain' ) .
-								 '" target="_blank">' . __( 'Support', 'BeRocket_domain' ) . '</a>';
+								 '/' . $meta_data . '" title="' . __( 'View Support Page', 'Ramphor_domain' ) .
+								 '" target="_blank">' . __( 'Support', 'Ramphor_domain' ) . '</a>';
 					}
 				} elseif ( ! empty( $this->plugin_version_capability ) && $this->plugin_version_capability > 10 ) {
 					$row_meta['premium'] = '<a href="https://berocket.com/support/product/' . $this->cc->values['premium_slug'] . $meta_data .
-								 '" title="' . __( 'View Premium Support Page', 'BeRocket_domain' ) .
-								 '" target="_blank">' . __( 'Premium Support', 'BeRocket_domain' ) . '</a>';
+								 '" title="' . __( 'View Premium Support Page', 'Ramphor_domain' ) .
+								 '" target="_blank">' . __( 'Premium Support', 'Ramphor_domain' ) . '</a>';
 				} else {
 					$row_meta['premium'] = '<a href="https://berocket.com/product/' . $this->cc->values['premium_slug'] . $meta_data .
-								 '" title="' . __( 'View Premium Version Page', 'BeRocket_domain' ) .
-								 '" target="_blank">' . __( 'Premium Version', 'BeRocket_domain' ) . '</a>';
+								 '" title="' . __( 'View Premium Version Page', 'Ramphor_domain' ) .
+								 '" target="_blank">' . __( 'Premium Version', 'Ramphor_domain' ) . '</a>';
 				}
 
 				$links = array_merge( $links, $row_meta );
@@ -501,7 +501,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 		}
 
 		/**
-		 * Function add options button to admin panel if there are 3+ plugins from BeRocket and return false
+		 * Function add options button to admin panel if there are 3+ plugins from Ramphor and return false
 		 * Other way it return true asking main function to add own options page
 		 *
 		 * @access public
@@ -510,10 +510,10 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 		 */
 		public function admin_menu() {
 			register_setting( $this->cc->values['option_page'], $this->cc->values['settings_name'], array( $this->cc, 'save_settings_callback' ) );
-			if ( method_exists( 'BeRocket_updater', 'get_plugin_count' ) ) {
+			if ( method_exists( 'Ramphor_updater', 'get_plugin_count' ) ) {
 				add_submenu_page(
 					'berocket_account',
-					$this->cc->info['norm_name'] . ' ' . __( 'Settings', 'BeRocket_domain' ),
+					$this->cc->info['norm_name'] . ' ' . __( 'Settings', 'Ramphor_domain' ),
 					$this->cc->info['norm_name'],
 					$this->option_page_capability(),
 					$this->cc->values['option_page'],
@@ -564,8 +564,8 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 				'hide_save_button'       => false,
 				'hide_form'              => false,
 				'hide_additional_blocks' => false,
-				'header_name'            => "{$this->cc->info['norm_name']} by BeRocket",
-				'header_description'     => str_replace( ' By BeRocket.', '', strip_tags( $plugin_info['Description'] ) ),
+				'header_name'            => "{$this->cc->info['norm_name']} by Ramphor",
+				'header_description'     => str_replace( ' By Ramphor.', '', strip_tags( $plugin_info['Description'] ) ),
 				'settings_name'          => $this->cc->values['settings_name'],
 				'options'                => $this->get_option(),
 				'name_for_filters'       => $this->cc->info['plugin_name'],
@@ -620,7 +620,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 					$is_first = false;
 				}
 				if ( ! $setup_style['hide_save_button'] ) {
-					$page_menu .= '<li class="berocket_framework_sidebar_save_button"><input type="submit" class="button-primary button" value="' . __( 'Save Changes', 'BeRocket_domain' ) . '" /></li>';
+					$page_menu .= '<li class="berocket_framework_sidebar_save_button"><input type="submit" class="button-primary button" value="' . __( 'Save Changes', 'Ramphor_domain' ) . '" /></li>';
 				}
 				if ( $setup_style['use_filters_hook'] ) {
 					$page_menu = apply_filters( 'brfr_page_menu_' . $setup_style['name_for_filters'], $page_menu, $tabs_info );
@@ -748,13 +748,13 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
                                 </th>";
 							} elseif ( $item['section'] == 'license' ) {
 								$page_content .= '
-                                    <th scope="row">' . __( 'Plugin key', 'BeRocket_domain' ) . '</th>
+                                    <th scope="row">' . __( 'Plugin key', 'Ramphor_domain' ) . '</th>
                                     <td><div class="license-block">
                                         <input id="berocket_product_key" size="50" name="' . $setup_style['settings_name'] . '[plugin_key]"
                                         type="text" value="' . $options['plugin_key'] . '"/>
                                         <input class="berocket_test_account_product button-secondary" data-id="' . $this->cc->info['id'] . '" type="button" value="Test"/>
                                         <br />
-                                        <span style="color:#666666;margin-left:2px;">' . __( 'Key for plugin from BeRocket.com', 'BeRocket_domain' ) . '</span>
+                                        <span style="color:#666666;margin-left:2px;">' . __( 'Key for plugin from Ramphor.com', 'Ramphor_domain' ) . '</span>
                                         <br />
                                         <div class="berocket_test_result"></div>
                                     </div></td>';
@@ -796,7 +796,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 					echo "
                         <header>
                             <div class='br_logo_white'>
-                                <a href='https://berocket.com/products/{$meta_data}' title='BeRocket' target='_blank'><img src='" . ( plugins_url( 'assets/images/br_logo_white.png', __FILE__ ) ) . "' /></a>
+                                <a href='https://berocket.com/products/{$meta_data}' title='Ramphor' target='_blank'><img src='" . ( plugins_url( 'assets/images/br_logo_white.png', __FILE__ ) ) . "' /></a>
                             </div>
                             <nav class='premium'>";
 					if ( ! $setup_style['hide_header_links'] ) {
@@ -846,7 +846,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 					echo $page_content;
 					echo '<div class="clear-both"></div>';
 				if ( ! $setup_style['hide_save_button'] ) {
-					echo '<input type="submit" class="berocket_framework_default_save_button button-primary button" value="' . __( 'Save Changes', 'BeRocket_domain' ) . '" />';
+					echo '<input type="submit" class="berocket_framework_default_save_button button-primary button" value="' . __( 'Save Changes', 'Ramphor_domain' ) . '" />';
 					echo '<div class="br_save_error"></div>';
 				}
 				if ( ! $setup_style['hide_form'] ) {
@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 			echo '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">';
 		}
 		public function plugin_version_check() {
-			$plugins = get_option( 'BeRocket_Framework_plugins_version_check' );
+			$plugins = get_option( 'Ramphor_Framework_plugins_version_check' );
 			if ( empty( $plugins ) || ! is_array( $plugins ) ) {
 				$plugins = array();
 			}
@@ -1079,7 +1079,7 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 				$this->update_version( $plugins[ $this->info['plugin_name'] ], $this->info['version'] );
 				$plugins[ $this->info['plugin_name'] ] = $this->info['version'];
 			}
-			update_option( 'BeRocket_Framework_plugins_version_check', $plugins );
+			update_option( 'Ramphor_Framework_plugins_version_check', $plugins );
 		}
 		public function update_version( $previous, $current ) {
 
@@ -1089,11 +1089,11 @@ if ( ! class_exists( 'BeRocket_Framework' ) ) {
 			return $user_caps;
 		}
 	}
-	add_action( 'admin_init', 'BeRocket_admin_init_user_capabilities' );
-	function BeRocket_admin_init_user_capabilities() {
+	add_action( 'admin_init', 'Ramphor_admin_init_user_capabilities' );
+	function Ramphor_admin_init_user_capabilities() {
 		global $wp_roles;
 		$role_names     = $wp_roles->get_names();
-		$berocket_roles = apply_filters( 'BeRocket_admin_init_user_capabilities', array( 'manage_berocket', 'manage_berocket_account' ) );
+		$berocket_roles = apply_filters( 'Ramphor_admin_init_user_capabilities', array( 'manage_berocket', 'manage_berocket_account' ) );
 		foreach ( $role_names as $role_name => $role_text ) {
 			$role_object = get_role( $role_name );
 			if ( $role_object->has_cap( 'manage_options' ) ) {

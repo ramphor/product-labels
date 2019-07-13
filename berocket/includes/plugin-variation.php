@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_plugin_variations' ) ) {
-	class BeRocket_plugin_variations {
+if ( ! class_exists( 'Ramphor_plugin_variations' ) ) {
+	class Ramphor_plugin_variations {
 		public $version_number = 0;
 		public $plugin_name;
 		public $values, $info, $defaults;

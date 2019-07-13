@@ -4,7 +4,7 @@
   * Plugin URI: https://github.com/ramphor/product-labels
   * Description: Promote your products! Show “Free Shipping” or other special attributes with your products.
   * Version: 1.1.14.1
-  * Author: BeRocket
+  * Author: Ramphor
   * Requires at least: 4.0
   * Author URI: https://berocket.com?utm_source=free_plugin&utm_medium=plugins&utm_campaign=products_label
   * Text Domain: ramphor-
@@ -14,13 +14,13 @@
   * @package Product/Labels
   */
 
-define( 'BeRocket_products_label_version', '1.1.14.1' );
-define( 'BeRocket_products_label_file', __FILE__ );
+define( 'Ramphor_products_label_version', '1.1.14.1' );
+define( 'Ramphor_products_label_file', __FILE__ );
 require_once 'main.php';
 
 /*
-if( ! function_exists('BeRocket_generate_sales_2018') ) {
-	function BeRocket_generate_sales_2018($data = array()) {
+if( ! function_exists('Ramphor_generate_sales_2018') ) {
+	function Ramphor_generate_sales_2018($data = array()) {
 		if( time() < strtotime('-7 days', $data['end']) ) {
 			$close_text = 'hide this for 7 days';
 			$nothankswidth = 115;
@@ -44,7 +44,7 @@ if( ! function_exists('BeRocket_generate_sales_2018') ) {
 		), $data);
 		new berocket_admin_notices($data);
 	}
-	BeRocket_generate_sales_2018(array(
+	Ramphor_generate_sales_2018(array(
 		'start'         => 1529532000,
 		'end'           => 1530392400,
 		'name'          => 'SALE_LABELS_2018',
@@ -53,7 +53,7 @@ if( ! function_exists('BeRocket_generate_sales_2018') ) {
 	 &nbsp; <span>Get your <strong class="red">44% discount</strong> now!</span>
 	 <a class="berocket_button" href="https://berocket.com/product/woocommerce-advanced-product-labels" target="_blank">Save $20</a>',
 	));
-	BeRocket_generate_sales_2018(array(
+	Ramphor_generate_sales_2018(array(
 		'start'         => 1530396000,
 		'end'           => 1531256400,
 		'name'          => 'SALE_MIN_MAX_2018',
@@ -62,7 +62,7 @@ if( ! function_exists('BeRocket_generate_sales_2018') ) {
 	 &nbsp; <span>Get your <strong class="red">44% discount</strong> now!</span>
 	 <a class="berocket_button" href="https://berocket.com/product/woocommerce-minmax-quantity" target="_blank">Save $20</a>',
 	));
-	BeRocket_generate_sales_2018(array(
+	Ramphor_generate_sales_2018(array(
 		'start'         => 1531260000,
 		'end'           => 1532120400,
 		'name'          => 'SALE_LOAD_MORE_2018',

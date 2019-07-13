@@ -807,7 +807,7 @@ if ( ! class_exists( 'berocket_admin_notices' ) ) {
 					'start'     => 0,
 					'end'       => 0,
 					'name'      => 'subscribe',
-					'html'      => 'Subscribe to get latest BeRocket news and updates, plugin recommendations and configuration help, promotional email with discount codes.',
+					'html'      => 'Subscribe to get latest Ramphor news and updates, plugin recommendations and configuration help, promotional email with discount codes.',
 					'subscribe' => true,
 					'image'     => array(
 						'local' => plugin_dir_url( __FILE__ ) . '../assets/images/ad_white_on_orange.png',
@@ -854,8 +854,8 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
 					<div class="notice notice-info berocket-rate-stars berocket-rate-stars-block berocket-rate-stars-<?php echo $plugin['id']; ?>">
 						<p>
 						<?php
-						$text           = __( 'Awesome, you\'ve been using %plugin_name% Plugin for more than 1 week. May we ask you to give it a 5-star rating on WordPress?', 'BeRocket_domain' );
-						$text_mobile    = __( 'May we ask you to give our plugin %plugin_name% a 5-star rating?', 'BeRocket_domain' );
+						$text           = __( 'Awesome, you\'ve been using %plugin_name% Plugin for more than 1 week. May we ask you to give it a 5-star rating on WordPress?', 'Ramphor_domain' );
+						$text_mobile    = __( 'May we ask you to give our plugin %plugin_name% a 5-star rating?', 'Ramphor_domain' );
 						$plugin['name'] = str_replace( ' for WooCommerce', '', $plugin['name'] );
 						$text           = str_replace( '%plugin_name%', '<a href="https://wordpress.org/support/plugin/' . $plugin['free_slug'] . '/" target="_blank">' . $plugin['name'] . '</a>', $text );
 						$text_mobile    = str_replace( '%plugin_name%', '<a href="https://wordpress.org/support/plugin/' . $plugin['free_slug'] . '/" target="_blank">' . $plugin['name'] . '</a>', $text_mobile );
@@ -866,9 +866,9 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
                                 data-prevent="0" 
                                 data-function="berocket_rate_star_close_notice"
                                 data-later="0" 
-                                data-thanks_html=\'<img src="' . plugin_dir_url( __FILE__ ) . '../assets/images/Thank-you.png"><h3 class="berocket_thank_you_rate_us">' . __( 'Each good feedback is very important for plugin growth', 'BeRocket_domain' ) . '</h3>\'
+                                data-thanks_html=\'<img src="' . plugin_dir_url( __FILE__ ) . '../assets/images/Thank-you.png"><h3 class="berocket_thank_you_rate_us">' . __( 'Each good feedback is very important for plugin growth', 'Ramphor_domain' ) . '</h3>\'
                                 href="https://wordpress.org/support/plugin/' . $plugin['free_slug'] . '/reviews/?filter=5#new-post" 
-                                target="_blank">' . __( 'Ok, you deserved it', 'BeRocket_domain' ) . '</a>
+                                target="_blank">' . __( 'Ok, you deserved it', 'Ramphor_domain' ) . '</a>
                             <span class="brfirts"> | </span>
                             <a class="berocket_rate_close brsecond" 
                                 data-plugin="' . $plugin['id'] . '" 
@@ -877,8 +877,8 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
                                 data-later="1" 
                                 data-function="berocket_rate_star_close_notice"
                                 href="#later">
-                                    <span class="brfeature_hide_mobile">' . __( 'Maybe later', 'BeRocket_domain' ) . '</span>
-                                    <span class="brfeature_show_mobile">' . __( 'Later', 'BeRocket_domain' ) . '</span>
+                                    <span class="brfeature_hide_mobile">' . __( 'Maybe later', 'Ramphor_domain' ) . '</span>
+                                    <span class="brfeature_show_mobile">' . __( 'Later', 'Ramphor_domain' ) . '</span>
                                 </a>
                             <span class="brsecond"> | </span>
                             <a class="berocket_rate_close brthird" 
@@ -888,8 +888,8 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
                                 data-later="0" 
                                 data-function="berocket_rate_star_close_notice"
                                 href="#close">
-                                    <span class="brfeature_hide_mobile">' . __( 'I already did', 'BeRocket_domain' ) . '</span>
-                                    <span class="brfeature_show_mobile">' . __( 'Already', 'BeRocket_domain' ) . '</span>
+                                    <span class="brfeature_hide_mobile">' . __( 'I already did', 'Ramphor_domain' ) . '</span>
+                                    <span class="brfeature_show_mobile">' . __( 'Already', 'Ramphor_domain' ) . '</span>
                                 </a>
                         </span><span class="brfeature_hide_mobile">' . $text . '</span>';
 						echo $text;
@@ -1005,17 +1005,17 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
 				foreach ( $plugins as $plugin ) {
 					if ( $plugin['id'] == $plugin_id ) {
 						$html = '<div class="berocket_rate_plugin berocket-rate-stars-block berocket-rate-stars-plugin-page-' . $plugin['id'] . '">
-                            <h3>' . __( 'May we ask you to give us a 5-star feedback?', 'BeRocket_domain' ) . '</h3>
+                            <h3>' . __( 'May we ask you to give us a 5-star feedback?', 'Ramphor_domain' ) . '</h3>
                             <a class="berocket_rate_close brfirst" 
                                 data-plugin="' . $plugin['id'] . '" 
                                 data-action="berocket_rate_stars_close" 
                                 data-prevent="0" 
                                 data-later="0" 
                                 data-function="berocket_rate_star_close_notice"
-                                data-thanks_html=\'<img src="' . plugin_dir_url( __FILE__ ) . '../assets/images/Thank-you.png"><h3 class="berocket_thank_you_rate_us">' . __( 'Each good feedback is very important for plugin growth', 'BeRocket_domain' ) . '</h3>\'
+                                data-thanks_html=\'<img src="' . plugin_dir_url( __FILE__ ) . '../assets/images/Thank-you.png"><h3 class="berocket_thank_you_rate_us">' . __( 'Each good feedback is very important for plugin growth', 'Ramphor_domain' ) . '</h3>\'
                                 href="https://wordpress.org/support/plugin/' . $plugin['free_slug'] . '/reviews/?filter=5#new-post" 
-                                target="_blank">' . __( 'Ok, you deserved it', 'BeRocket_domain' ) . '</a>
-                                <p>' . __( 'Support the plugin by setting good feedback.<br>We really need this.', 'BeRocket_domain' ) . '</p>
+                                target="_blank">' . __( 'Ok, you deserved it', 'Ramphor_domain' ) . '</a>
+                                <p>' . __( 'Support the plugin by setting good feedback.<br>We really need this.', 'Ramphor_domain' ) . '</p>
                         </div>
                         <style>
                         .berocket_rate_plugin {
@@ -1121,10 +1121,10 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
                             <img src="' . plugin_dir_url( __FILE__ ) . '../assets/images/Feature-request-form-title.png" alt="Feature Request">
                             <form class="berocket_feature_request_inside">
                                 <input name="brfeature_plugin" type="hidden" value="' . $plugin['id'] . '">
-                                <input name="brfeature_title" placeholder="' . __( 'Feature Title', 'BeRocket_domain' ) . '">
-                                <input name="brfeature_email" placeholder="' . __( 'Email (optional)', 'BeRocket_domain' ) . '">
-                                <textarea name="brfeature_description" placeholder="' . __( 'Feature Description', 'BeRocket_domain' ) . '"></textarea>
-                                <button class="berocket_feature_request_submit" type="submit">' . __( 'SEND FEATURE REQUEST', 'BeRocket_domain' ) . '</button>
+                                <input name="brfeature_title" placeholder="' . __( 'Feature Title', 'Ramphor_domain' ) . '">
+                                <input name="brfeature_email" placeholder="' . __( 'Email (optional)', 'Ramphor_domain' ) . '">
+                                <textarea name="brfeature_description" placeholder="' . __( 'Feature Description', 'Ramphor_domain' ) . '"></textarea>
+                                <button class="berocket_feature_request_submit" type="submit">' . __( 'SEND FEATURE REQUEST', 'Ramphor_domain' ) . '</button>
                             </form>
                             <div style="margin-bottom: 10px;">* <small>This form will be sended to <a target="_blank" href="https://berocket.com' . $meta_data . '">berocket.com</a></small></div>
                         </div>
@@ -1133,7 +1133,7 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
 					if ( empty( $disabled[ $plugin_id ] ) || $disabled[ $plugin_id ]['time'] != 0 ) {
 						$html .= '
                         <div class="berocket_feature_request_rate berocket-rate-stars-plugin-feature-' . $plugin_id . '">
-                            <h3>' . __( "While you're here, you could rate this plugin", 'BeRocket_domain' ) . '</h3>
+                            <h3>' . __( "While you're here, you could rate this plugin", 'Ramphor_domain' ) . '</h3>
                             <ul class="berocket-rate-stars-block">
                             <li><a class="berocket_rate_close brfirst" 
                                 data-plugin="' . $plugin['id'] . '" 
@@ -1141,18 +1141,18 @@ if ( ! class_exists( 'berocket_admin_notices_rate_stars' ) ) {
                                 data-prevent="0" 
                                 data-later="0" 
                                 data-function="berocket_rate_star_close_notice"
-                                data-thanks_html=\'<img src="' . plugin_dir_url( __FILE__ ) . '../assets/images/Thank-you.png"><h3 class="berocket_thank_you_rate_us">' . __( 'Each good feedback is very important for plugin growth', 'BeRocket_domain' ) . '</h3>\'
+                                data-thanks_html=\'<img src="' . plugin_dir_url( __FILE__ ) . '../assets/images/Thank-you.png"><h3 class="berocket_thank_you_rate_us">' . __( 'Each good feedback is very important for plugin growth', 'Ramphor_domain' ) . '</h3>\'
                                 href="https://wordpress.org/support/plugin/' . $plugin['free_slug'] . '/reviews/?filter=5#new-post" 
-                                target="_blank">' . __( 'This plugin deserves 5 stars', 'BeRocket_domain' ) . '</a></li>
+                                target="_blank">' . __( 'This plugin deserves 5 stars', 'Ramphor_domain' ) . '</a></li>
                             <li><a class="berocket_rate_next_time brsecond" 
-                                href="#later">' . __( "I'll rate it next time", 'BeRocket_domain' ) . '</a></li>
+                                href="#later">' . __( "I'll rate it next time", 'Ramphor_domain' ) . '</a></li>
                             <li><a class="berocket_rate_close brthird" 
                                 data-plugin="' . $plugin['id'] . '" 
                                 data-action="berocket_rate_stars_close" 
                                 data-prevent="1" 
                                 data-later="0" 
                                 data-function="berocket_rate_star_close_notice"
-                                href="#close">' . __( 'I already rated it', 'BeRocket_domain' ) . '</a></li>
+                                href="#close">' . __( 'I already rated it', 'Ramphor_domain' ) . '</a></li>
                             </ul>
                         </div>';
 					}

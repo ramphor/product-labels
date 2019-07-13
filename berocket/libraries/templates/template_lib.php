@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_framework_template_lib' ) ) {
-	class BeRocket_framework_template_lib {
+if ( ! class_exists( 'Ramphor_framework_template_lib' ) ) {
+	class Ramphor_framework_template_lib {
 		public $template_file   = '';
 		public $plugin_name     = '';
 		public $active_template = '';

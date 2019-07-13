@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_popup_display' ) ) {
-	class BeRocket_popup_display {
+if ( ! class_exists( 'Ramphor_popup_display' ) ) {
+	class Ramphor_popup_display {
 		public static $elements   = array();
 		public static $load_popup = false;
 		function __construct() {
@@ -8,7 +8,7 @@ if ( ! class_exists( 'BeRocket_popup_display' ) ) {
 			add_action( 'wp_footer', array( $this, 'wp_footer2' ), 90000 );
 			$open_types = array( 'click', 'page_open', 'scroll_px', 'scroll_block', 'leave_page' );
 			foreach ( $open_types as $open_type ) {
-				add_filter( 'BeRocket_popup_open_type_' . $open_type, array( $this, 'popup_open_type_' . $open_type ), 10, 5 );
+				add_filter( 'Ramphor_popup_open_type_' . $open_type, array( $this, 'popup_open_type_' . $open_type ), 10, 5 );
 			}
 		}
 		public static function include_assets() {
@@ -72,12 +72,12 @@ if ( ! class_exists( 'BeRocket_popup_display' ) ) {
 						}
 						foreach ( $element['popup_open'] as $popup_open ) {
 							if ( is_array( $popup_open ) && ! empty( $popup_open['type'] ) ) {
-								$page_elements = apply_filters( 'BeRocket_popup_open_type_' . $popup_open['type'], $page_elements, $popup_open, $element, $element_i, $element_id );
+								$page_elements = apply_filters( 'Ramphor_popup_open_type_' . $popup_open['type'], $page_elements, $popup_open, $element, $element_i, $element_id );
 							}
 						}
 					}
 				}
-				$page_elements = apply_filters( 'BeRocket_popup_open_page_elements', $page_elements, self::$elements );
+				$page_elements = apply_filters( 'Ramphor_popup_open_page_elements', $page_elements, self::$elements );
 				echo $page_elements['html_content'];
 				echo '<script>
                     jQuery(document).ready(function() {
@@ -171,5 +171,5 @@ if ( ! class_exists( 'BeRocket_popup_display' ) ) {
 			return $page_elements;
 		}
 	}
-	new BeRocket_popup_display();
+	new Ramphor_popup_display();
 }

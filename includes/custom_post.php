@@ -1,7 +1,7 @@
 <?php
-class BeRocket_conditions_advanced_labels extends BeRocket_conditions {
+class Ramphor_conditions_advanced_labels extends Ramphor_conditions {
 }
-class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
+class Ramphor_advanced_labels_custom_post extends Ramphor_custom_post_class {
 	public $hook_name = 'berocket_advanced_label_editor';
 	public $conditions;
 	protected static $instance;
@@ -9,23 +9,23 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 		add_action( 'products_label_framework_construct', array( $this, 'init_conditions' ) );
 		$this->post_name        = 'br_labels';
 		$this->post_settings    = array(
-			'label'               => __( 'Advanced Label', 'BeRocket_products_label_domain' ),
+			'label'               => __( 'Advanced Label', 'Ramphor_products_label_domain' ),
 			'labels'              => array(
-				'name'               => __( 'Advanced Label', 'BeRocket_products_label_domain' ),
-				'singular_name'      => __( 'Advanced Label', 'BeRocket_products_label_domain' ),
-				'menu_name'          => _x( 'Advanced Labels', 'Admin menu name', 'BeRocket_products_label_domain' ),
-				'add_new'            => __( 'Add Label', 'BeRocket_products_label_domain' ),
-				'add_new_item'       => __( 'Add New Label', 'BeRocket_products_label_domain' ),
-				'edit'               => __( 'Edit', 'BeRocket_products_label_domain' ),
-				'edit_item'          => __( 'Edit Label', 'BeRocket_products_label_domain' ),
-				'new_item'           => __( 'New Label', 'BeRocket_products_label_domain' ),
-				'view'               => __( 'View Labels', 'BeRocket_products_label_domain' ),
-				'view_item'          => __( 'View Label', 'BeRocket_products_label_domain' ),
-				'search_items'       => __( 'Search Advanced Labels', 'BeRocket_products_label_domain' ),
-				'not_found'          => __( 'No Advanced Labels found', 'BeRocket_products_label_domain' ),
-				'not_found_in_trash' => __( 'No Advanced Labels found in trash', 'BeRocket_products_label_domain' ),
+				'name'               => __( 'Advanced Label', 'Ramphor_products_label_domain' ),
+				'singular_name'      => __( 'Advanced Label', 'Ramphor_products_label_domain' ),
+				'menu_name'          => _x( 'Advanced Labels', 'Admin menu name', 'Ramphor_products_label_domain' ),
+				'add_new'            => __( 'Add Label', 'Ramphor_products_label_domain' ),
+				'add_new_item'       => __( 'Add New Label', 'Ramphor_products_label_domain' ),
+				'edit'               => __( 'Edit', 'Ramphor_products_label_domain' ),
+				'edit_item'          => __( 'Edit Label', 'Ramphor_products_label_domain' ),
+				'new_item'           => __( 'New Label', 'Ramphor_products_label_domain' ),
+				'view'               => __( 'View Labels', 'Ramphor_products_label_domain' ),
+				'view_item'          => __( 'View Label', 'Ramphor_products_label_domain' ),
+				'search_items'       => __( 'Search Advanced Labels', 'Ramphor_products_label_domain' ),
+				'not_found'          => __( 'No Advanced Labels found', 'Ramphor_products_label_domain' ),
+				'not_found_in_trash' => __( 'No Advanced Labels found in trash', 'Ramphor_products_label_domain' ),
 			),
-			'description'         => __( 'This is where you can add advanced labels.', 'BeRocket_products_label_domain' ),
+			'description'         => __( 'This is where you can add advanced labels.', 'Ramphor_products_label_domain' ),
 			'public'              => true,
 			'show_ui'             => true,
 			'map_meta_cap'        => true,
@@ -90,15 +90,15 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 			'i4_custom_class'        => '',
 			'i4_custom_css'          => '',
 		);
-		$this->add_meta_box( 'conditions', __( 'Conditions', 'BeRocket_products_label_domain' ) );
-		$this->add_meta_box( 'settings', __( 'Advanced Labels Settings', 'BeRocket_products_label_domain' ) );
-		$this->add_meta_box( 'description', __( 'Description', 'BeRocket_products_label_domain' ), false, 'side' );
-		$this->add_meta_box( 'preview', __( 'Preview', 'BeRocket_products_label_domain' ), false, 'side' );
+		$this->add_meta_box( 'conditions', __( 'Conditions', 'Ramphor_products_label_domain' ) );
+		$this->add_meta_box( 'settings', __( 'Advanced Labels Settings', 'Ramphor_products_label_domain' ) );
+		$this->add_meta_box( 'description', __( 'Description', 'Ramphor_products_label_domain' ), false, 'side' );
+		$this->add_meta_box( 'preview', __( 'Preview', 'Ramphor_products_label_domain' ), false, 'side' );
 		add_filter( 'brfr_berocket_advanced_label_editor_custom_css_explanation', array( __CLASS__, 'section_custom_css_explanation' ), 10, 4 );
 		parent::__construct();
 	}
 	public function init_conditions() {
-		$this->conditions = new BeRocket_conditions_advanced_labels(
+		$this->conditions = new Ramphor_conditions_advanced_labels(
 			$this->post_name . '[data]',
 			$this->hook_name,
 			array(
@@ -125,10 +125,10 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 	}
 	public function description( $post ) {
 		?>
-		<p><?php _e( 'Label without any condition will be displayed on all products', 'BeRocket_products_label_domain' ); ?></p>
-		<p><?php _e( 'Connection between condition can be AND and OR', 'BeRocket_products_label_domain' ); ?></p>
-		<p><strong>AND</strong> <?php _e( 'uses between condition in one section', 'BeRocket_products_label_domain' ); ?></p>
-		<p><strong>OR</strong> <?php _e( 'uses between different sections with conditions', 'BeRocket_products_label_domain' ); ?></p>
+		<p><?php _e( 'Label without any condition will be displayed on all products', 'Ramphor_products_label_domain' ); ?></p>
+		<p><?php _e( 'Connection between condition can be AND and OR', 'Ramphor_products_label_domain' ); ?></p>
+		<p><strong>AND</strong> <?php _e( 'uses between condition in one section', 'Ramphor_products_label_domain' ); ?></p>
+		<p><strong>OR</strong> <?php _e( 'uses between different sections with conditions', 'Ramphor_products_label_domain' ); ?></p>
 		<?php
 	}
 	public function preview( $post ) {
@@ -256,12 +256,12 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 		return $default_settings;
 	}
 	public function settings( $post ) {
-		$BeRocket_products_label = BeRocket_products_label::getInstance();
-		$BeRocket_products_label->load_admin_edit_scripts();
+		$Ramphor_products_label = Ramphor_products_label::getInstance();
+		$Ramphor_products_label->load_admin_edit_scripts();
 		$options                     = $this->get_option( $post->ID );
-		$BeRocket_products_label_var = BeRocket_products_label::getInstance();
+		$Ramphor_products_label_var = Ramphor_products_label::getInstance();
 		echo '<div class="br_framework_settings br_alabel_settings">';
-		$BeRocket_products_label_var->display_admin_settings(
+		$Ramphor_products_label_var->display_admin_settings(
 			array(
 				'General'    => array(
 					'icon' => 'cog',
@@ -286,46 +286,46 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 						'options' => array(
 							array(
 								'value' => 'text',
-								'text'  => __( 'Text', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Text', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'sale_p',
-								'text'  => __( 'Discount percentage', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Discount percentage', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'price',
-								'text'  => __( 'Price', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Price', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'stock_status',
-								'text'  => __( 'Stock Status', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Stock Status', 'Ramphor_products_label_domain' ),
 							),
 						),
 						'class'   => 'berocket_label_content_type',
-						'label'   => __( 'Content type', 'BeRocket_products_label_domain' ),
+						'label'   => __( 'Content type', 'Ramphor_products_label_domain' ),
 						'name'    => 'content_type',
 						'value'   => $options['content_type'],
 					),
 					'text'           => array(
 						'type'  => 'text',
-						'label' => __( 'Text', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Text', 'Ramphor_products_label_domain' ),
 						'class' => 'berocket_label_ berocket_label_text',
 						'name'  => 'text',
 						'value' => $options['text'],
 					),
 					'text_before'    => array(
-						'label' => __( 'Text Before', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Text Before', 'Ramphor_products_label_domain' ),
 						'items' => array(
 							'text_before'    => array(
 								'type'         => 'text',
 								'class'        => 'berocket_label_ berocket_label_sale_p',
-								'label_be_for' => __( 'Text', 'BeRocket_products_label_domain' ),
+								'label_be_for' => __( 'Text', 'Ramphor_products_label_domain' ),
 								'name'         => 'text_before',
 								'value'        => $options['text_before'],
 							),
 							'text_before_nl' => array(
 								'type'      => 'checkbox',
-								'label_for' => __( 'New Line', 'BeRocket_products_label_domain' ),
+								'label_for' => __( 'New Line', 'Ramphor_products_label_domain' ),
 								'name'      => 'text_before_nl',
 								'value'     => '1',
 								'selected'  => false,
@@ -333,18 +333,18 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 						),
 					),
 					'text_after'     => array(
-						'label' => __( 'Text After', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Text After', 'Ramphor_products_label_domain' ),
 						'items' => array(
 							'text_after'     => array(
 								'type'         => 'text',
 								'class'        => 'berocket_label_ berocket_label_sale_p',
-								'label_be_for' => __( 'Text', 'BeRocket_products_label_domain' ),
+								'label_be_for' => __( 'Text', 'Ramphor_products_label_domain' ),
 								'name'         => 'text_after',
 								'value'        => $options['text_after'],
 							),
 							'text_before_nl' => array(
 								'type'      => 'checkbox',
-								'label_for' => __( 'New Line', 'BeRocket_products_label_domain' ),
+								'label_for' => __( 'New Line', 'Ramphor_products_label_domain' ),
 								'name'      => 'text_after_nl',
 								'value'     => '1',
 								'selected'  => false,
@@ -353,7 +353,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'discount_minus' => array(
 						'type'     => 'checkbox',
-						'label'    => __( 'Use minus symbol', 'BeRocket_products_label_domain' ),
+						'label'    => __( 'Use minus symbol', 'Ramphor_products_label_domain' ),
 						'class'    => 'berocket_label_ berocket_label_sale_p',
 						'name'     => 'discount_minus',
 						'value'    => '1',
@@ -364,13 +364,13 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					/*
 					'templates' => array(
 						"section"  => "templates",
-						"label"    => __('Templates', 'BeRocket_products_label_domain'),
+						"label"    => __('Templates', 'Ramphor_products_label_domain'),
 						"name"     => "css_template",
 						"value"    => $options['template'],
 					),*/
 					'color_use'     => array(
 						'type'     => 'checkbox',
-						'label'    => __( 'Use background color', 'BeRocket_products_label_domain' ),
+						'label'    => __( 'Use background color', 'Ramphor_products_label_domain' ),
 						'class'    => 'br_label_backcolor_use br_js_change',
 						'name'     => 'color_use',
 						'value'    => '1',
@@ -379,7 +379,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'color'         => array(
 						'type'  => 'color',
-						'label' => __( 'Background color', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Background color', 'Ramphor_products_label_domain' ),
 						'name'  => 'color',
 						'class' => 'br_label_backcolor br_js_change',
 						'extra' => ' data-for=".br_alabel > span" data-style="background-color" data-ext=""',
@@ -387,7 +387,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'font_color'    => array(
 						'type'  => 'color',
-						'label' => __( 'Font color', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Font color', 'Ramphor_products_label_domain' ),
 						'name'  => 'font_color',
 						'class' => 'berocket_label_ berocket_label_text berocket_label_sale_end berocket_label_sale_p br_js_change',
 						'extra' => ' data-for=".br_alabel > span" data-style="color" data-ext=""',
@@ -395,7 +395,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'border_radius' => array(
 						'type'  => 'text',
-						'label' => __( 'Border radius', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Border radius', 'Ramphor_products_label_domain' ),
 						'name'  => 'border_radius',
 						'class' => 'br_js_change',
 						'extra' => ' data-for=".br_alabel > span" data-style="border-radius" data-ext="px" data-notext="px,em,%"',
@@ -403,7 +403,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'line_height'   => array(
 						'type'  => 'number',
-						'label' => __( 'Line height', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Line height', 'Ramphor_products_label_domain' ),
 						'name'  => 'line_height',
 						'class' => 'br_js_change',
 						'extra' => ' min="0" max="400" data-for=".br_alabel > span" data-style="line-height" data-ext="px"',
@@ -411,7 +411,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'image_height'  => array(
 						'type'  => 'number',
-						'label' => __( 'Height', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Height', 'Ramphor_products_label_domain' ),
 						'name'  => 'image_height',
 						'class' => 'br_js_change',
 						'extra' => ' data-for=".br_alabel > span" data-style="height" data-ext="px"',
@@ -419,7 +419,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'image_width'   => array(
 						'type'  => 'number',
-						'label' => __( 'Width', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Width', 'Ramphor_products_label_domain' ),
 						'name'  => 'image_width',
 						'class' => 'br_js_change',
 						'extra' => ' data-for=".br_alabel > span" data-style="width" data-ext="px"',
@@ -432,21 +432,21 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 						'options' => array(
 							array(
 								'value' => 'label',
-								'text'  => __( 'Label', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Label', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'image',
-								'text'  => __( 'On image', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'On image', 'Ramphor_products_label_domain' ),
 							),
 						),
 						'class'   => 'berocket_label_type_select',
-						'label'   => __( 'Type', 'BeRocket_products_label_domain' ),
+						'label'   => __( 'Type', 'Ramphor_products_label_domain' ),
 						'name'    => 'type',
 						'value'   => $options['type'],
 					),
 					'padding_top'        => array(
 						'type'  => 'number',
-						'label' => __( 'Padding from top', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Padding from top', 'Ramphor_products_label_domain' ),
 						'class' => 'berocket_label_type_ berocket_label_type_image br_js_change',
 						'name'  => 'padding_top',
 						'extra' => ' data-for=".br_alabel" data-style="top" data-ext="px"',
@@ -454,7 +454,7 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'padding_horizontal' => array(
 						'type'  => 'number',
-						'label' => '<span class="pos__ pos__left">' . __( 'Padding from left: ', 'BeRocket_products_label_domain' ) . '</span><span class="pos__ pos__right">' . __( 'Padding from right: ', 'BeRocket_products_label_domain' ) . '</span>',
+						'label' => '<span class="pos__ pos__left">' . __( 'Padding from left: ', 'Ramphor_products_label_domain' ) . '</span><span class="pos__ pos__right">' . __( 'Padding from right: ', 'Ramphor_products_label_domain' ) . '</span>',
 						'class' => 'berocket_label_type_ berocket_label_type_image pos_label_ pos_label_right pos_label_left br_js_change',
 						'name'  => 'padding_horizontal',
 						'extra' => ' data-for=".br_alabel" data-from=".pos_label" data-ext="px"',
@@ -465,26 +465,26 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 						'options' => array(
 							array(
 								'value' => 'left',
-								'text'  => __( 'Left', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Left', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'center',
-								'text'  => __( 'Center', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Center', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'right',
-								'text'  => __( 'Right', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Right', 'Ramphor_products_label_domain' ),
 							),
 						),
 						'class'   => 'pos_label',
-						'label'   => __( 'Position', 'BeRocket_products_label_domain' ),
+						'label'   => __( 'Position', 'Ramphor_products_label_domain' ),
 						'name'    => 'position',
 						'value'   => $options['position'],
 					),
 				),
 				'Tooltip'    => array(
 					'tooltip_content'        => array(
-						'label' => __( 'Content', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Content', 'Ramphor_products_label_domain' ),
 						'type'  => 'textarea',
 						'class' => 'berocket_html_tooltip_content',
 						'name'  => 'tooltip_content',
@@ -495,18 +495,18 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 						'options' => array(
 							array(
 								'value' => 'dark',
-								'text'  => __( 'Dark', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Dark', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'light',
-								'text'  => __( 'Light', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Light', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'translucent',
-								'text'  => __( 'Translucent', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Translucent', 'Ramphor_products_label_domain' ),
 							),
 						),
-						'label'   => __( 'Style', 'BeRocket_products_label_domain' ),
+						'label'   => __( 'Style', 'Ramphor_products_label_domain' ),
 						'name'    => 'tooltip_theme',
 						'value'   => $options['tooltip_theme'],
 					),
@@ -515,35 +515,35 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 						'options' => array(
 							array(
 								'value' => 'top',
-								'text'  => __( 'Top', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Top', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'bottom',
-								'text'  => __( 'Bottom', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Bottom', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'left',
-								'text'  => __( 'Left', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Left', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'right',
-								'text'  => __( 'Right', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Right', 'Ramphor_products_label_domain' ),
 							),
 						),
-						'label'   => __( 'Position', 'BeRocket_products_label_domain' ),
+						'label'   => __( 'Position', 'Ramphor_products_label_domain' ),
 						'name'    => 'tooltip_position',
 						'value'   => $options['tooltip_position'],
 					),
 					'tooltip_open_delay'     => array(
 						'type'  => 'number',
-						'label' => __( 'Open delay', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Open delay', 'Ramphor_products_label_domain' ),
 						'name'  => 'tooltip_open_delay',
 						'extra' => 'min="0"',
 						'value' => $options['tooltip_open_delay'],
 					),
 					'tooltip_close_delay'    => array(
 						'type'  => 'number',
-						'label' => __( 'Close delay', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Close delay', 'Ramphor_products_label_domain' ),
 						'name'  => 'tooltip_close_delay',
 						'extra' => 'min="0"',
 						'value' => $options['tooltip_close_delay'],
@@ -553,32 +553,32 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 						'options' => array(
 							array(
 								'value' => 'mouseenter',
-								'text'  => __( 'Hover', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Hover', 'Ramphor_products_label_domain' ),
 							),
 							array(
 								'value' => 'click',
-								'text'  => __( 'Click', 'BeRocket_products_label_domain' ),
+								'text'  => __( 'Click', 'Ramphor_products_label_domain' ),
 							),
 						),
-						'label'   => __( 'Open on', 'BeRocket_products_label_domain' ),
+						'label'   => __( 'Open on', 'Ramphor_products_label_domain' ),
 						'name'    => 'tooltip_open_on',
 						'value'   => $options['tooltip_open_on'],
 					),
 					'tooltip_close_on_click' => array(
 						'type'  => 'checkbox',
-						'label' => __( 'Close on click everywhere', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Close on click everywhere', 'Ramphor_products_label_domain' ),
 						'name'  => 'tooltip_close_on_click',
 						'value' => '1',
 					),
 					'tooltip_use_arrow'      => array(
 						'type'  => 'checkbox',
-						'label' => __( 'Use arrow', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Use arrow', 'Ramphor_products_label_domain' ),
 						'name'  => 'tooltip_use_arrow',
 						'value' => '1',
 					),
 					'tooltip_max_width'      => array(
 						'type'  => 'number',
-						'label' => __( 'Max width', 'BeRocket_products_label_domain' ),
+						'label' => __( 'Max width', 'Ramphor_products_label_domain' ),
 						'name'  => 'tooltip_max_width',
 						'extra' => 'min="0"',
 						'value' => $options['tooltip_max_width'],
@@ -590,85 +590,85 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					),
 					'div_custom_class'       => array(
 						'type'  => 'text',
-						'label' => __( '&lt;div&gt; block custom class', 'BeRocket_products_label_domain' ),
+						'label' => __( '&lt;div&gt; block custom class', 'Ramphor_products_label_domain' ),
 						'name'  => 'div_custom_class',
 						'value' => $options['div_custom_class'],
 					),
 					'div_custom_css'         => array(
 						'type'  => 'textarea',
-						'label' => __( '&lt;div&gt; block custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( '&lt;div&gt; block custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'div_custom_css',
 						'value' => $options['div_custom_css'],
 					),
 					'span_custom_class'      => array(
 						'type'  => 'text',
-						'label' => __( '&lt;span&gt; block custom class', 'BeRocket_products_label_domain' ),
+						'label' => __( '&lt;span&gt; block custom class', 'Ramphor_products_label_domain' ),
 						'name'  => 'span_custom_class',
 						'value' => $options['span_custom_class'],
 					),
 					'span_custom_css'        => array(
 						'type'  => 'textarea',
-						'label' => __( '&lt;span&gt; block custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( '&lt;span&gt; block custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'span_custom_css',
 						'value' => $options['span_custom_css'],
 					),
 					'b_custom_class'         => array(
 						'type'  => 'text',
-						'label' => __( '&lt;b&gt; block custom class', 'BeRocket_products_label_domain' ),
+						'label' => __( '&lt;b&gt; block custom class', 'Ramphor_products_label_domain' ),
 						'name'  => 'b_custom_class',
 						'value' => $options['b_custom_class'],
 					),
 					'b_custom_css'           => array(
 						'type'  => 'textarea',
-						'label' => __( '&lt;b&gt; block custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( '&lt;b&gt; block custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'b_custom_css',
 						'value' => $options['b_custom_css'],
 					),
 					'i1_custom_class'        => array(
 						'type'  => 'text',
-						'label' => __( '1) &lt;i&gt; block custom class', 'BeRocket_products_label_domain' ),
+						'label' => __( '1) &lt;i&gt; block custom class', 'Ramphor_products_label_domain' ),
 						'name'  => 'i1_custom_class',
 						'value' => $options['i1_custom_class'],
 					),
 					'i1_custom_css'          => array(
 						'type'  => 'textarea',
-						'label' => __( '1) &lt;i&gt; block custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( '1) &lt;i&gt; block custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'i1_custom_css',
 						'value' => $options['i1_custom_css'],
 					),
 					'i2_custom_class'        => array(
 						'type'  => 'text',
-						'label' => __( '2) &lt;i&gt; block custom class', 'BeRocket_products_label_domain' ),
+						'label' => __( '2) &lt;i&gt; block custom class', 'Ramphor_products_label_domain' ),
 						'name'  => 'i2_custom_class',
 						'value' => $options['i2_custom_class'],
 					),
 					'i2_custom_css'          => array(
 						'type'  => 'textarea',
-						'label' => __( '2) &lt;i&gt; block custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( '2) &lt;i&gt; block custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'i2_custom_css',
 						'value' => $options['i2_custom_css'],
 					),
 					'i3_custom_class'        => array(
 						'type'  => 'text',
-						'label' => __( '3) &lt;i&gt; block custom class', 'BeRocket_products_label_domain' ),
+						'label' => __( '3) &lt;i&gt; block custom class', 'Ramphor_products_label_domain' ),
 						'name'  => 'i3_custom_class',
 						'value' => $options['i3_custom_class'],
 					),
 					'i3_custom_css'          => array(
 						'type'  => 'textarea',
-						'label' => __( '3) &lt;i&gt; block custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( '3) &lt;i&gt; block custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'i3_custom_css',
 						'value' => $options['i3_custom_css'],
 					),
 					'i4_custom_class'        => array(
 						'type'  => 'text',
-						'label' => __( '4) &lt;i&gt; block custom class', 'BeRocket_products_label_domain' ),
+						'label' => __( '4) &lt;i&gt; block custom class', 'Ramphor_products_label_domain' ),
 						'name'  => 'i4_custom_class',
 						'value' => $options['i4_custom_class'],
 					),
 					'i4_custom_css'          => array(
 						'type'  => 'textarea',
-						'label' => __( '4) &lt;i&gt; block custom CSS', 'BeRocket_products_label_domain' ),
+						'label' => __( '4) &lt;i&gt; block custom CSS', 'Ramphor_products_label_domain' ),
 						'name'  => 'i4_custom_css',
 						'value' => $options['i4_custom_css'],
 					),
@@ -750,15 +750,15 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 	}
 	public function wc_save_product_without_check( $post_id, $post ) {
 		if ( isset( $_POST[ $this->post_name ] ) && is_array( $_POST[ $this->post_name ] ) ) {
-			$BeRocket_products_label   = BeRocket_products_label::getInstance();
-			$_POST[ $this->post_name ] = $BeRocket_products_label->recursive_array_set( $this->default_settings, $_POST[ $this->post_name ] );
+			$Ramphor_products_label   = Ramphor_products_label::getInstance();
+			$_POST[ $this->post_name ] = $Ramphor_products_label->recursive_array_set( $this->default_settings, $_POST[ $this->post_name ] );
 		}
 		parent::wc_save_product_without_check( $post_id, $post );
 	}
 	public function manage_edit_columns( $columns ) {
 		$columns             = parent::manage_edit_columns( $columns );
-		$columns['products'] = __( 'Label text', 'BeRocket_products_label_domain' );
-		$columns['data']     = __( 'Position', 'BeRocket_products_label_domain' );
+		$columns['products'] = __( 'Label text', 'Ramphor_products_label_domain' );
+		$columns['data']     = __( 'Position', 'Ramphor_products_label_domain' );
 		return $columns;
 	}
 	public function columns_replace( $column ) {
@@ -772,20 +772,20 @@ class BeRocket_advanced_labels_custom_post extends BeRocket_custom_post_class {
 					$text = $label_type['text'];
 				}
 				if ( $label_type['content_type'] == 'sale_p' ) {
-					$text = __( 'Discount percentage', 'BeRocket_products_label_domain' );
+					$text = __( 'Discount percentage', 'Ramphor_products_label_domain' );
 				}
 				$text = esc_html( $text );
 				echo apply_filters( 'berocket_labels_products_column_text', $text, $label_type );
 				break;
 			case 'data':
 				$position = array(
-					'left'   => __( 'Left', 'BeRocket_products_label_domain' ),
-					'center' => __( 'Center', 'BeRocket_products_label_domain' ),
-					'right'  => __( 'Right', 'BeRocket_products_label_domain' ),
+					'left'   => __( 'Left', 'Ramphor_products_label_domain' ),
+					'center' => __( 'Center', 'Ramphor_products_label_domain' ),
+					'right'  => __( 'Right', 'Ramphor_products_label_domain' ),
 				);
 				$type     = array(
-					'image' => __( 'On image', 'BeRocket_products_label_domain' ),
-					'label' => __( 'Label', 'BeRocket_products_label_domain' ),
+					'image' => __( 'On image', 'Ramphor_products_label_domain' ),
+					'label' => __( 'Label', 'Ramphor_products_label_domain' ),
 				);
 				if ( isset( $label_type['position'] ) && isset( $label_type['type'] ) ) {
 					echo $type[ $label_type['type'] ] . ' ( ' . $position[ $label_type['position'] ] . ' )';

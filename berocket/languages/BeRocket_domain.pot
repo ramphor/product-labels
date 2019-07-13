@@ -56,7 +56,7 @@ msgid "Plugin key"
 msgstr ""
 
 #: berocket/framework.php:676
-msgid "Key for plugin from BeRocket.com"
+msgid "Key for plugin from Ramphor.com"
 msgstr ""
 
 #: berocket/includes/admin_notices.php:816
@@ -189,7 +189,7 @@ msgid "with help of Plugin/Account Key from"
 msgstr ""
 
 #: berocket/includes/updater.php:220
-msgid "BeRocket account"
+msgid "Ramphor account"
 msgstr ""
 
 #: berocket/includes/updater.php:221
@@ -197,7 +197,7 @@ msgid "You can activate plugin in"
 msgstr ""
 
 #: berocket/includes/updater.php:222
-msgid "BeRocket Account settings"
+msgid "Ramphor Account settings"
 msgstr ""
 
 #: berocket/includes/functions.php:143

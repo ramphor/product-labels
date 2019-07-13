@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_framework_check_init_lib' ) ) {
-	class BeRocket_framework_check_init_lib {
+if ( ! class_exists( 'Ramphor_framework_check_init_lib' ) ) {
+	class Ramphor_framework_check_init_lib {
 		public $check_array  = array();
 		public $notices      = array();
 		public $check_result = array(
@@ -38,7 +38,7 @@ if ( ! class_exists( 'BeRocket_framework_check_init_lib' ) ) {
 								if ( method_exists( $this, 'check_' . $check_and['check'] ) ) {
 									$result_and = $result_and && $this->{'check_' . $check_and['check']}( ( isset( $check_and['data'] ) ? $check_and['data'] : array() ) );
 								}
-								$result_and = apply_filters( 'BeRocket_framework_check_init_' . $check_and['check'], $result_and, $check_and );
+								$result_and = apply_filters( 'Ramphor_framework_check_init_' . $check_and['check'], $result_and, $check_and );
 							}
 						}
 						$result = $result_and;
@@ -65,7 +65,7 @@ if ( ! class_exists( 'BeRocket_framework_check_init_lib' ) ) {
 			return $result;
 		}
 		function check_framework_version( $data = array() ) {
-			$framework_version = ( ( ! class_exists( 'BeRocket_Framework' ) || empty( BeRocket_Framework::$framework_version ) ) ? '0' : BeRocket_Framework::$framework_version );
+			$framework_version = ( ( ! class_exists( 'Ramphor_Framework' ) || empty( Ramphor_Framework::$framework_version ) ) ? '0' : Ramphor_Framework::$framework_version );
 			$result            = $this->version_compare( $framework_version, $data );
 			$this->show_notice( $result, $data );
 			return $result;

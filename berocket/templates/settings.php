@@ -14,7 +14,7 @@ $options       = $this->get_option();
 ?>
 <div class="wrap br_framework_settings br_<?php echo $this->cc->info['plugin_name']; ?>_settings">
 	<div id="icon-themes" class="icon32"></div>
-	<h2><?php echo $this->cc->info['full_name'] . ' ' . __( 'Settings', 'BeRocket_domain' ); ?></h2>
+	<h2><?php echo $this->cc->info['full_name'] . ' ' . __( 'Settings', 'Ramphor_domain' ); ?></h2>
 	<?php settings_errors(); ?>
 	<?php $this->cc->admin_settings(); ?>
 </div>

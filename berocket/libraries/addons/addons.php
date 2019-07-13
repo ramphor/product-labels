@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_framework_addons' ) ) {
-	class BeRocket_framework_addons {
+if ( ! class_exists( 'Ramphor_framework_addons' ) ) {
+	class Ramphor_framework_addons {
 		public $info;
 		public $values;
 		public $options;
@@ -17,14 +17,14 @@ if ( ! class_exists( 'BeRocket_framework_addons' ) ) {
 			add_filter( 'berocket_addons_info_' . $this->hook_name, array( $this, 'sort_paid_addons' ), 9000, 1 );
 			$this->load_addons();
 
-			new BeRocket_framework_libraries( array( 'tooltip' ), $info, $values, $options );
+			new Ramphor_framework_libraries( array( 'tooltip' ), $info, $values, $options );
 
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 		}
 
 		function admin_init() {
 			add_filter(
-				'BeRocket_style_addon_library_additional_html_' . $this->hook_name,
+				'Ramphor_style_addon_library_additional_html_' . $this->hook_name,
 				array(
 					$this,
 					'paid_only_sign',
@@ -107,11 +107,11 @@ if ( ! class_exists( 'BeRocket_framework_addons' ) ) {
 			$html       .= '<td colspan="2" class="berocket_addons_list">';
 			$elements    = array(
 				'active'   => array(
-					'title' => __( 'Active Addons', 'BeRocket_domain' ),
+					'title' => __( 'Active Addons', 'Ramphor_domain' ),
 					'html'  => array(),
 				),
 				'inactive' => array(
-					'title' => __( 'Inactive Addons', 'BeRocket_domain' ),
+					'title' => __( 'Inactive Addons', 'Ramphor_domain' ),
 					'html'  => array(),
 				),
 			);
@@ -127,10 +127,10 @@ if ( ! class_exists( 'BeRocket_framework_addons' ) ) {
 					'close_addon_block' => '</span>',
 					'close_label'       => '</label>',
 				);
-				$html_array = apply_filters( 'BeRocket_style_addon_library_additional_html_' . $this->hook_name, $html_array, $addon_info, $item, $options, $settings_name );
+				$html_array = apply_filters( 'Ramphor_style_addon_library_additional_html_' . $this->hook_name, $html_array, $addon_info, $item, $options, $settings_name );
 				$elements[ ( $checked ? 'active' : 'inactive' ) ]['html'][ $addon_info['addon_file'] ] = implode( $html_array );
 				if ( ! empty( $addon_info['tooltip'] ) ) {
-					BeRocket_tooltip_display::add_tooltip(
+					Ramphor_tooltip_display::add_tooltip(
 						array(
 							'boundary'    => 'window',
 							'arrow'       => true,
@@ -163,7 +163,7 @@ if ( ! class_exists( 'BeRocket_framework_addons' ) ) {
 				$meta_data  = '?utm_source=free_plugin&utm_medium=plugins&utm_campaign=' . $this->info['plugin_name'];
 				$html       = '<i class="berocket_addon_paid_sign fa fa-lock"></i>';
 				$html      .= '<div class="berocket_addon_paid_get"><a target="_blank" href="https://berocket.com/product/' . $this->values['premium_slug'] . $meta_data . '"><span>
-                ' . __( 'Go Premium', 'BeRocket_domain' ) . '
+                ' . __( 'Go Premium', 'Ramphor_domain' ) . '
                 </span></a></div>';
 				$html_array = berocket_insert_to_array( $html_array, 'close_addon_block', array( 'paid_only' => $html ) );
 			}

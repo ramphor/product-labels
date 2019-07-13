@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_tooltip_display' ) ) {
-	class BeRocket_tooltip_display {
+if ( ! class_exists( 'Ramphor_tooltip_display' ) ) {
+	class Ramphor_tooltip_display {
 		public static $elements   = array();
 		public static $load_tippy = false;
 		function __construct() {
@@ -82,7 +82,7 @@ if ( ! class_exists( 'BeRocket_tooltip_display' ) ) {
 					$page_elements['page_load'] .= '
                     tippy("' . $element['selector'] . '", ' . json_encode( $element['options'] ) . ');';
 				}
-				$page_elements = apply_filters( 'BeRocket_tooltip_tippy_page_elements', $page_elements, self::$elements );
+				$page_elements = apply_filters( 'Ramphor_tooltip_tippy_page_elements', $page_elements, self::$elements );
 				echo $page_elements['html_content'];
 				echo '<script>
                     jQuery(document).ready(function() {
@@ -99,5 +99,5 @@ if ( ! class_exists( 'BeRocket_tooltip_display' ) ) {
 			}
 		}
 	}
-	new BeRocket_tooltip_display();
+	new Ramphor_tooltip_display();
 }

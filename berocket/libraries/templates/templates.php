@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_framework_templates' ) ) {
-	class BeRocket_framework_templates {
+if ( ! class_exists( 'Ramphor_framework_templates' ) ) {
+	class Ramphor_framework_templates {
 		public $info;
 		public $values;
 		public $options;
@@ -19,14 +19,14 @@ if ( ! class_exists( 'BeRocket_framework_templates' ) ) {
 
 			$this->load_template();
 
-			new BeRocket_framework_libraries( array( 'tooltip' ), $info, $values, $options );
+			new Ramphor_framework_libraries( array( 'tooltip' ), $info, $values, $options );
 
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 		}
 
 		function admin_init() {
 			add_filter(
-				'BeRocket_style_template_library_additional_html_' . $this->hook_name,
+				'Ramphor_style_template_library_additional_html_' . $this->hook_name,
 				array(
 					$this,
 					'paid_only_sign',
@@ -131,10 +131,10 @@ if ( ! class_exists( 'BeRocket_framework_templates' ) ) {
 					'close_template_block' => '</span>',
 					'close_label'          => '</label>',
 				);
-				$html_array = apply_filters( 'BeRocket_style_template_library_additional_html_' . $this->hook_name, $html_array, $template_info, $item, $options, $settings_name );
+				$html_array = apply_filters( 'Ramphor_style_template_library_additional_html_' . $this->hook_name, $html_array, $template_info, $item, $options, $settings_name );
 				$elements['main']['html'][ $template_info['template_file'] ] = implode( $html_array );
 				if ( ! empty( $template_info['tooltip'] ) ) {
-					BeRocket_tooltip_display::add_tooltip(
+					Ramphor_tooltip_display::add_tooltip(
 						array(
 							'boundary'    => 'window',
 							'arrow'       => true,
@@ -170,7 +170,7 @@ if ( ! class_exists( 'BeRocket_framework_templates' ) ) {
 				$html       = '<i class="berocket_template_paid_sign fa fa-lock"></i>';
 				$html      .= '<div class="berocket_template_paid_get"><a target="_blank" href="https://berocket.com/product/' . $this->values['premium_slug'] . $meta_data . '"><span>
                 <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
-                ' . __( 'Go Premium', 'BeRocket_domain' ) . '
+                ' . __( 'Go Premium', 'Ramphor_domain' ) . '
                 <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
                 </span></a></div>';
 				$html_array = berocket_insert_to_array( $html_array, 'close_template_block', array( 'paid_only' => $html ) );

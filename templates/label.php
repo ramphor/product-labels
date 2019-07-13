@@ -1,15 +1,15 @@
 <?php
 global $pagenow, $post;
-$BeRocket_advanced_labels_custom_post = BeRocket_advanced_labels_custom_post::getInstance();
+$Ramphor_advanced_labels_custom_post = Ramphor_advanced_labels_custom_post::getInstance();
 $label                                = array(
 	'label_from_post' => '',
 );
 if ( ! in_array( $pagenow, array( 'post-new.php' ) ) ) {
-	$label = $BeRocket_advanced_labels_custom_post->get_option( $post->ID );
+	$label = $Ramphor_advanced_labels_custom_post->get_option( $post->ID );
 }
 echo '<div class="panel wc-metaboxes-wrapper" id="br_alabel" style="display: none;">';
 wp_nonce_field( 'br_labels_check', 'br_labels_nonce' );
-echo '<table><tr><th>' . __( 'Label to display on this product', 'BeRocket_products_label_domain' ) . '</th>
+echo '<table><tr><th>' . __( 'Label to display on this product', 'Ramphor_products_label_domain' ) . '</th>
 <td><div style="max-height:200px;margin:10px 0;overflow: auto;">';
 $args        = array(
 	'posts_per_page'   => -1,
@@ -42,7 +42,7 @@ echo '</div></td></tr></table>';
 	</div>
 </div>
 <?php
-$BeRocket_advanced_labels_custom_post->settings( $post );
+$Ramphor_advanced_labels_custom_post->settings( $post );
 ?>
 </div>
 <style>

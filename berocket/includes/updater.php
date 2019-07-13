@@ -1,10 +1,10 @@
 <?php
-if ( ! class_exists( 'BeRocket_updater' ) ) {
-	define( 'BeRocket_update_path', 'https://berocket.com/' );
-	define( 'BeRocket_updater_log', true );
+if ( ! class_exists( 'Ramphor_updater' ) ) {
+	define( 'Ramphor_update_path', 'https://berocket.com/' );
+	define( 'Ramphor_updater_log', true );
 	include_once plugin_dir_path( __FILE__ ) . 'error_notices.php';
 
-	class BeRocket_updater {
+	class Ramphor_updater {
 		public static $plugin_info = array();
 		public static $slugs       = array();
 		public static $key         = '';
@@ -39,13 +39,13 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 			add_action( 'wp_ajax_br_test_key', array( __CLASS__, 'test_key' ) );
 			add_filter( 'http_request_host_is_external', array( __CLASS__, 'allow_berocket_host' ), 10, 3 );
 
-			if ( BeRocket_updater_log ) {
+			if ( Ramphor_updater_log ) {
 				add_action( 'admin_footer', array( __CLASS__, 'error_log' ) );
 				add_action( 'wp_footer', array( __CLASS__, 'error_log' ) );
 			}
 
 			$plugin = array();
-			$plugin = apply_filters( 'BeRocket_updater_add_plugin', $plugin );
+			$plugin = apply_filters( 'Ramphor_updater_add_plugin', $plugin );
 
 			if ( ! isset( $options['plugin_key'] ) || ! is_array( $options['plugin_key'] ) ) {
 				$options['plugin_key'] = array();
@@ -88,7 +88,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 
 		public static function error_log() {
 			if ( self::$debug_mode ) {
-				self::$error_log                        = apply_filters( 'BeRocket_updater_error_log', self::$error_log );
+				self::$error_log                        = apply_filters( 'Ramphor_updater_error_log', self::$error_log );
 				self::$error_log['real_memory_usage']   = memory_get_peak_usage( true );
 				self::$error_log['script_memory_usage'] = memory_get_peak_usage( false );
 				self::$error_log['plugins']             = self::$plugin_info;
@@ -127,13 +127,13 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 			$new_sub_order  = array();
 			$new_order_sort = array();
 
-			$compatibility_hack = apply_filters( 'BeRocket_updater_menu_order_custom_post', array() );
+			$compatibility_hack = apply_filters( 'Ramphor_updater_menu_order_custom_post', array() );
 
-			$BeRocket_item     = false;
+			$Ramphor_item     = false;
 			$account_keys_item = false;
 			foreach ( $submenu['berocket_account'] as $item ) {
-				if ( $item[0] == 'BeRocket' ) {
-					$BeRocket_item = $item;
+				if ( $item[0] == 'Ramphor' ) {
+					$Ramphor_item = $item;
 					continue;
 				} elseif ( $item[0] == 'Account Keys' ) {
 					$account_keys_item = $item;
@@ -151,13 +151,13 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 					$new_order_sort[] = $item[0];
 				}
 			}
-			$new_sub_order = apply_filters( 'BeRocket_updater_menu_order_sub_order', $new_sub_order );
+			$new_sub_order = apply_filters( 'Ramphor_updater_menu_order_sub_order', $new_sub_order );
 
 			array_multisort( $new_order_sort, $new_order_temp );
 
 			$new_order = array();
-			if ( $BeRocket_item !== false ) {
-				$new_order[] = $BeRocket_item;
+			if ( $Ramphor_item !== false ) {
+				$new_order[] = $Ramphor_item;
 			}
 			foreach ( $new_order_temp as $item ) {
 				$new_order[] = $item;
@@ -237,11 +237,11 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 							'start'         => 0,
 							'end'           => 0,
 							'name'          => $plugin['name'],
-							'html'          => '<strong>' . __( 'Please', 'BeRocket_domain' ) . '
-                                <a class="berocket_button" href="' . ( is_network_admin() ? admin_url( 'network/admin.php?page=berocket_account' ) : admin_url( 'admin.php?page=berocket_account' ) ) . '">' . __( 'activate plugin', 'BeRocket_domain' ) . '</a> ' . $plugin['name'] . ' ' . __( 'with help of Plugin/Account Key from', 'BeRocket_domain' ) . '
-                                <a class="berocket_button" href="' . BeRocket_update_path . 'user' . $meta_data . '" target="_blank">' . __( 'BeRocket account', 'BeRocket_domain' ) . '</a></strong>.
-                                ' . __( 'You can activate plugin in', 'BeRocket_domain' ) . ' 
-                                <a class="berocket_button" href="' . ( is_network_admin() ? admin_url( 'network/admin.php?page=berocket_account' ) : admin_url( 'admin.php?page=berocket_account' ) ) . '">' . __( 'BeRocket Account settings', 'BeRocket_domain' ) . '</a>
+							'html'          => '<strong>' . __( 'Please', 'Ramphor_domain' ) . '
+                                <a class="berocket_button" href="' . ( is_network_admin() ? admin_url( 'network/admin.php?page=berocket_account' ) : admin_url( 'admin.php?page=berocket_account' ) ) . '">' . __( 'activate plugin', 'Ramphor_domain' ) . '</a> ' . $plugin['name'] . ' ' . __( 'with help of Plugin/Account Key from', 'Ramphor_domain' ) . '
+                                <a class="berocket_button" href="' . Ramphor_update_path . 'user' . $meta_data . '" target="_blank">' . __( 'Ramphor account', 'Ramphor_domain' ) . '</a></strong>.
+                                ' . __( 'You can activate plugin in', 'Ramphor_domain' ) . ' 
+                                <a class="berocket_button" href="' . ( is_network_admin() ? admin_url( 'network/admin.php?page=berocket_account' ) : admin_url( 'admin.php?page=berocket_account' ) ) . '">' . __( 'Ramphor Account settings', 'Ramphor_domain' ) . '</a>
                                 ',
 							'righthtml'     => '',
 							'rightwidth'    => 0,
@@ -306,7 +306,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 				}
 
 				$response = wp_remote_post(
-					BeRocket_update_path . 'main/account_updater',
+					Ramphor_update_path . 'main/account_updater',
 					array(
 						'body'        => array(
 							'key'     => $key,
@@ -391,7 +391,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 		public static function scripts() {
 			?>
 			<script>
-				function BeRocket_key_check(key, show_correct, product_id, async_func, fast) {
+				function Ramphor_key_check(key, show_correct, product_id, async_func, fast) {
 					if (typeof( product_id ) == 'undefined' || product_id == null) {
 						product_id = 0;
 					}
@@ -449,7 +449,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 					} else {
 						key = jQuery('#berocket_product_key').val();
 					}
-					BeRocket_key_check(key, true, jQuery(this).data('id'));
+					Ramphor_key_check(key, true, jQuery(this).data('id'));
 				});
 			</script>
 			<style>
@@ -462,8 +462,8 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 
 		public static function network_account_page() {
 			add_menu_page(
-				'BeRocket Account Settings',
-				'BeRocket Account',
+				'Ramphor Account Settings',
+				'Ramphor Account',
 				'manage_berocket',
 				'berocket_account',
 				array(
@@ -477,8 +477,8 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 
 		public static function main_menu_item() {
 			add_menu_page(
-				'BeRocket Account',
-				'BeRocket',
+				'Ramphor Account',
+				'Ramphor',
 				'manage_berocket',
 				'berocket_account',
 				array(
@@ -493,7 +493,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 		public static function account_page() {
 			add_submenu_page(
 				'berocket_account',
-				'BeRocket Account Settings',
+				'Ramphor Account Settings',
 				'Account Keys',
 				'manage_berocket_account',
 				'berocket_account',
@@ -505,7 +505,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 		}
 
 		public static function account_option_register() {
-			register_setting( 'BeRocket_account_option_settings', 'BeRocket_account_option', array( 'sanitize_callback' => array( __CLASS__, 'reset_update_plugin_data' ) ) );
+			register_setting( 'Ramphor_account_option_settings', 'Ramphor_account_option', array( 'sanitize_callback' => array( __CLASS__, 'reset_update_plugin_data' ) ) );
 		}
 
 		public static function reset_update_plugin_data( $data ) {
@@ -520,7 +520,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 			<div class="wrap">
 				<form method="post" action="options.php" class="account_key_send br_framework_settings">
 					<?php
-					$options = get_option( 'BeRocket_account_option' );
+					$options = get_option( 'Ramphor_account_option' );
 					self::inside_form( $options );
 					?>
 				</form>
@@ -533,14 +533,14 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 			<div class="wrap">
 				<form method="post" action="edit.php?page=berocket_account" class="account_key_send br_framework_settings">
 					<?php
-					if ( isset( $_POST['BeRocket_account_option'] ) ) {
-						$option = berocket_sanitize_array( $_POST['BeRocket_account_option'] );
-						update_site_option( 'BeRocket_account_option', $option );
+					if ( isset( $_POST['Ramphor_account_option'] ) ) {
+						$option = berocket_sanitize_array( $_POST['Ramphor_account_option'] );
+						update_site_option( 'Ramphor_account_option', $option );
 						self::update_check_set( '' );
 						delete_site_transient( 'update_plugins' );
 					}
 
-					$options = get_site_option( 'BeRocket_account_option' );
+					$options = get_site_option( 'Ramphor_account_option' );
 					self::inside_form( $options );
 					?>
 				</form>
@@ -549,19 +549,19 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 		}
 
 		public static function inside_form( $options ) {
-			settings_fields( 'BeRocket_account_option_settings' );
+			settings_fields( 'Ramphor_account_option_settings' );
 			if ( isset( $options['plugin_key'] ) && is_array( $options['plugin_key'] ) ) {
 				$plugins_key = $options['plugin_key'];
 			} else {
 				$plugins_key = array();
 			}
 			?>
-			<h2>BeRocket Account Settings</h2>
+			<h2>Ramphor Account Settings</h2>
 			<div>
 				<table>
 					<tr>
 						<td><h3>DEBUG MODE</h3></td>
-						<td colspan=3><label><input type="checkbox" name="BeRocket_account_option[debug_mode]"
+						<td colspan=3><label><input type="checkbox" name="Ramphor_account_option[debug_mode]"
 													value="1"
 													<?php
 													if ( ! empty( $options['debug_mode'] ) ) {
@@ -571,7 +571,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 					</tr>
 					<tr>
 						<td><h3>Account key</h3></td>
-						<td><input type="text" id="berocket_account_key" name="BeRocket_account_option[account_key]"
+						<td><input type="text" id="berocket_account_key" name="Ramphor_account_option[account_key]"
 								   size="50"
 								   value="<?php echo( empty( $options['account_key'] ) ? '' : $options['account_key'] ); ?>">
 						</td>
@@ -588,14 +588,14 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 							echo $plugin['slug'];
 						}
 						echo '</h4></td>';
-						echo '<td><input class="berocket_test_account_product_key" id="berocket_product_key_', $plugin['id'], '" size="50" name="BeRocket_account_option[plugin_key][', $plugin['id'], ']" type="text" value="', ( empty( $options['plugin_key'][ $plugin['id'] ] ) ? '' : $options['plugin_key'][ $plugin['id'] ] ), '"></td>';
+						echo '<td><input class="berocket_test_account_product_key" id="berocket_product_key_', $plugin['id'], '" size="50" name="Ramphor_account_option[plugin_key][', $plugin['id'], ']" type="text" value="', ( empty( $options['plugin_key'][ $plugin['id'] ] ) ? '' : $options['plugin_key'][ $plugin['id'] ] ), '"></td>';
 						echo '<td><input class="berocket_test_account_product save_checked button tiny-button" data-id="', $plugin['id'], '" data-product="#berocket_product_key_', $plugin['id'], '" type="button" value="Test"></td>';
 						echo '<td class="berocket_product_key_status berocket_product_key_', $plugin['id'], '_status"></td>';
 						echo '</tr>';
 						unset( $plugins_key[ $plugin['id'] ] );
 					}
 					foreach ( $plugins_key as $key_id => $key_val ) {
-						echo '<input name="BeRocket_account_option[plugin_key][', $key_id, ']" type="hidden" value="', $key_val, '">';
+						echo '<input name="Ramphor_account_option[plugin_key][', $key_id, ']" type="hidden" value="', $key_val, '">';
 					}
 					?>
 				</table>
@@ -628,7 +628,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 				jQuery('.berocket_test_account').click(function (event) {
 					event.preventDefault();
 					key = jQuery('#berocket_account_key').val();
-					BeRocket_key_check(key, true);
+					Ramphor_key_check(key, true);
 				});
 				jQuery(document).on('change', '.berocket_test_account_product_key', function() {
 					jQuery(this).parents('.berocket_updater_plugin_key').find('.berocket_test_account_product').removeClass('save_checked');
@@ -647,7 +647,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 							key = jQuery('#berocket_product_key').val();
 						}
 						element.addClass('save_checked');
-						BeRocket_key_check(key, false, element.data('id'), next_berocket_key_check, 1);
+						Ramphor_key_check(key, false, element.data('id'), next_berocket_key_check, 1);
 					} else {
 						button.html('Saving keys <i class="fa fa-refresh fa-spin"></i>');
 						jQuery('.account_key_send').trigger('submit');
@@ -665,7 +665,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 							button.html('Checking keys '+berocket_key_checked+' / '+berocket_key_count+' <i class="fa fa-refresh fa-spin"></i>');
 							key = jQuery('#berocket_account_key').val();
 							jQuery('#berocket_account_key').addClass('save_checked');
-							BeRocket_key_check(key, false, null, next_berocket_key_check, 1);
+							Ramphor_key_check(key, false, null, next_berocket_key_check, 1);
 						}
 					} else if( key_count > 0 ) {
 						event.preventDefault();
@@ -698,7 +698,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 					$version = get_transient( 'brversion_' . $plugin['id'] . '_' . $key );
 					if ( $version == false ) {
 						$site_url = get_site_url();
-						$url      = BeRocket_update_path . 'main/get_plugin_version/' . $plugin['id'] . '/' . $key;
+						$url      = Ramphor_update_path . 'main/get_plugin_version/' . $plugin['id'] . '/' . $key;
 
 						$response = wp_remote_post(
 							$url,
@@ -739,8 +739,8 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 						$val                                 = array(
 							'id'          => 'br_' . $plugin['id'],
 							'new_version' => $version,
-							'package'     => BeRocket_update_path . 'main/update_product/' . $plugin['id'] . '/' . $key,
-							'url'         => BeRocket_update_path . 'product/' . $plugin['id'],
+							'package'     => Ramphor_update_path . 'main/update_product/' . $plugin['id'] . '/' . $key,
+							'url'         => Ramphor_update_path . 'product/' . $plugin['id'],
 							'plugin'      => $plugin['plugin'],
 							'slug'        => $plugin['slug'],
 						);
@@ -775,8 +775,8 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 					$val                                 = (object) array(
 						'id'          => 'br_' . $plugin['id'],
 						'new_version' => $plugin['version'],
-						'package'     => BeRocket_update_path . 'main/update_product/' . $plugin['id'] . '/' . ( empty( $key ) ? 'none' : $key ),
-						'url'         => BeRocket_update_path . 'product/' . $plugin['id'],
+						'package'     => Ramphor_update_path . 'main/update_product/' . $plugin['id'] . '/' . ( empty( $key ) ? 'none' : $key ),
+						'url'         => Ramphor_update_path . 'product/' . $plugin['id'],
 						'plugin'      => $plugin['plugin'],
 						'slug'        => $plugin['slug'],
 					);
@@ -814,7 +814,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 				$plugin_info = get_transient( 'brplugin_info_' . $plugin_id );
 
 				if ( $plugin_info == false ) {
-					$url      = BeRocket_update_path . 'main/update_info/' . $plugin_id;
+					$url      = Ramphor_update_path . 'main/update_info/' . $plugin_id;
 					$site_url = get_site_url();
 					$response = wp_remote_post(
 						$url,
@@ -847,9 +847,9 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 			}
 
 			if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
-				$options = get_site_option( 'BeRocket_account_option' );
+				$options = get_site_option( 'Ramphor_account_option' );
 			} else {
-				$options = get_option( 'BeRocket_account_option' );
+				$options = get_option( 'Ramphor_account_option' );
 			}
 
 			return $options;
@@ -861,9 +861,9 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 			}
 
 			if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
-				update_site_option( 'BeRocket_account_option', $options );
+				update_site_option( 'Ramphor_account_option', $options );
 			} else {
-				update_option( 'BeRocket_account_option', $options );
+				update_option( 'Ramphor_account_option', $options );
 			}
 			self::update_check_set( '' );
 			delete_site_transient( 'update_plugins' );
@@ -890,7 +890,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 		public static function woocommerce_addons_sections( $sections ) {
 			$sections[] = (object) array(
 				'slug'  => 'berocket',
-				'label' => 'BeRocket',
+				'label' => 'Ramphor',
 			);
 			return $sections;
 		}
@@ -898,7 +898,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 			if ( false === ( $addons = get_transient( 'wc_addons_berocket' ) ) ) {
 				$addons   = array();
 				$response = wp_remote_post(
-					BeRocket_update_path . 'api/data/get_product_data/public',
+					Ramphor_update_path . 'api/data/get_product_data/public',
 					array(
 						'method'      => 'GET',
 						'timeout'     => 30,
@@ -951,6 +951,6 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 		}
 	}
 
-	BeRocket_updater::init();
-	add_action( 'plugins_loaded', array( 'BeRocket_updater', 'run' ), 999 );
+	Ramphor_updater::init();
+	add_action( 'plugins_loaded', array( 'Ramphor_updater', 'run' ), 999 );
 }

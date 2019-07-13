@@ -1,6 +1,6 @@
 <?php
-if ( ! class_exists( 'BeRocket_error_notices' ) ) {
-	class BeRocket_error_notices {
+if ( ! class_exists( 'Ramphor_error_notices' ) ) {
+	class Ramphor_error_notices {
 		public function __construct() {
 			add_action( 'wp_ajax_berocket_error_notices_get', array( __CLASS__, 'get_plugin_error_ajax' ) );
 		}
@@ -128,5 +128,5 @@ if ( ! class_exists( 'BeRocket_error_notices' ) ) {
 			return $html;
 		}
 	}
-	new BeRocket_error_notices();
+	new Ramphor_error_notices();
 }

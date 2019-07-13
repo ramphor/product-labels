@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: BeRocket framework\n"
+"Project-Id-Version: Ramphor framework\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-11 12:46+0000\n"
 "PO-Revision-Date: 2019-03-11 12:47+0000\n"
@@ -56,8 +56,8 @@ msgid "Plugin key"
 msgstr "Plugin key"
 
 #: berocket/framework.php:676
-msgid "Key for plugin from BeRocket.com"
-msgstr "Key for plugin from BeRocket.com"
+msgid "Key for plugin from Ramphor.com"
+msgstr "Key for plugin from Ramphor.com"
 
 #: berocket/includes/admin_notices.php:816
 msgid ""
@@ -191,16 +191,16 @@ msgid "with help of Plugin/Account Key from"
 msgstr "with help of Plugin/Account Key from"
 
 #: berocket/includes/updater.php:220
-msgid "BeRocket account"
-msgstr "BeRocket account"
+msgid "Ramphor account"
+msgstr "Ramphor account"
 
 #: berocket/includes/updater.php:221
 msgid "You can activate plugin in"
 msgstr "You can activate plugin in"
 
 #: berocket/includes/updater.php:222
-msgid "BeRocket Account settings"
-msgstr "BeRocket Account settings"
+msgid "Ramphor Account settings"
+msgstr "Ramphor Account settings"
 
 #: berocket/includes/functions.php:143
 msgid "Default"
